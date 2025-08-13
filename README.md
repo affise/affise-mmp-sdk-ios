@@ -791,7 +791,11 @@ If above event functionality still limits your usecase, you can use `UserCustomE
 
 ```swift
 UserCustomEvent(eventName: "MyCustomEvent")
-    .send()   
+    .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "best before 2029")
+    .addPredefinedParameter(PredefinedObject.CONTENT, object: [
+        ("collection", "Greatest Hits")
+    ])
+    .send() // Send event
 ```
 
 ## Predefined event parameters
@@ -1299,6 +1303,14 @@ In examples above `ReferrerKey.CLICK_ID` is used, but many others is available:
 - `SUB_5`
 
 ## Get module state
+
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> Required [Module Status](#module-status)
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
 
 Get state of the module:
 
