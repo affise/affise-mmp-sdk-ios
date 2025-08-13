@@ -118,6 +118,9 @@ public class AffiseApiWrapper: NSObject {
         // Subscription Module
         case .MODULE_SUBS_FETCH_PRODUCTS_CALLBACK: callModuleSubsFetchProductsCallback(api, map: map, result: result)
         case .MODULE_SUBS_PURCHASE_CALLBACK: callModuleSubsPurchaseCallback(api, map: map, result: result)
+
+        // TikTok Module
+        case .MODULE_TIKTOK_EVENT: callModuleTikTokEvent(api, map: map, result: result)
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////
@@ -650,6 +653,25 @@ public class AffiseApiWrapper: NSObject {
             ]
             self.callback?(api.method, data)
         }
+        result?.success(nil)
+    }
+
+    // TikTok Module
+    private func callModuleTikTokEvent(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) { 
+        guard let data: [String: Any?] = map.opt(api) else {
+            result?.error("api [\(api.method)]: no valid data")
+            return
+        }
+
+        guard let eventName: String = data.opt(DataName.EVENT_NAME) else {
+            result?.error("api [\(api.method)]: eventName not set")
+            return
+        }
+
+        let properties: [AnyHashable:Any]? = data.opt(DataName.EVENT_VALUES)
+        let eventId: String? = data.opt(DataName.EVENT_ID)
+
+        Affise.Module.TikTok.sendEvent(eventName, properties: properties, eventId: eventId)
         result?.success(nil)
     }
     ////////////////////////////////////////

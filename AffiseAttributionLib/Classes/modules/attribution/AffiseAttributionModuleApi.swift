@@ -10,6 +10,7 @@ public protocol AffiseAttributionModuleApi : AnyObject {
     /**
     * Manual module start
     */
+    @available(*, deprecated, message: "Will be removed")
     @discardableResult
     func moduleStart(_ module: AffiseModules) -> Bool
 

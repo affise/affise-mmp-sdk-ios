@@ -54,6 +54,8 @@ public enum AffiseApiMethod: Int {
     // Subscription Module
     case MODULE_SUBS_FETCH_PRODUCTS_CALLBACK
     case MODULE_SUBS_PURCHASE_CALLBACK
+    // TikTok Module
+    case MODULE_TIKTOK_EVENT
     ////////////////////////////////////////
     // modules
     ////////////////////////////////////////
@@ -111,6 +113,8 @@ public enum AffiseApiMethod: Int {
         // Subscription Module
         case .MODULE_SUBS_FETCH_PRODUCTS_CALLBACK: return "module_subs_fetch_products_callback"
         case .MODULE_SUBS_PURCHASE_CALLBACK: return "module_subs_purchase_callback"
+        // TikTok Module
+        case .MODULE_TIKTOK_EVENT: return "module_tiktok_event"
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////

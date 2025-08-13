@@ -169,8 +169,10 @@ open class Event: NSObject {
         return predefinedCustom
     }
 
-    func addRawParameters(_ parameters: [String:Any]) {
+    func addRawParameters(_ parameters: [AnyHashable:Any?]?) {
+        guard let parameters = parameters else { return }
         for (key, value) in parameters {
+            if value == nil { continue }
             predefinedParameters.append(("\(PredefinedConstants.PREFIX)\(key)", value))
         }
     }

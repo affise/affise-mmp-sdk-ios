@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.54] - 2025-08-13
+
+### Added
+
+- New module `TikTok`.
+- Api `Affise.Module.TikTok.sendEvent`.
+
 ## [1.6.53] - 2025-07-23
 
 ### Added
@@ -216,29 +223,30 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
-[1.6.53]: https://github.com/affise/sdk-ios/compare/1.6.52...1.6.53
-[1.6.52]: https://github.com/affise/sdk-ios/compare/1.6.51...1.6.52
-[1.6.51]: https://github.com/affise/sdk-ios/compare/1.6.50...1.6.51
-[1.6.50]: https://github.com/affise/sdk-ios/compare/1.6.49...1.6.50
-[1.6.49]: https://github.com/affise/sdk-ios/compare/1.6.48...1.6.49
-[1.6.48]: https://github.com/affise/sdk-ios/compare/1.6.47...1.6.48
-[1.6.47]: https://github.com/affise/sdk-ios/compare/1.6.46...1.6.47
-[1.6.46]: https://github.com/affise/sdk-ios/compare/1.6.45...1.6.46
-[1.6.45]: https://github.com/affise/sdk-ios/compare/1.6.44...1.6.45
-[1.6.44]: https://github.com/affise/sdk-ios/compare/1.6.43...1.6.44
-[1.6.43]: https://github.com/affise/sdk-ios/compare/1.6.42...1.6.43
-[1.6.42]: https://github.com/affise/sdk-ios/compare/1.6.41...1.6.42
-[1.6.41]: https://github.com/affise/sdk-ios/compare/1.6.40...1.6.41
-[1.6.40]: https://github.com/affise/sdk-ios/compare/1.6.39...1.6.40
-[1.6.39]: https://github.com/affise/sdk-ios/compare/1.6.38...1.6.39
-[1.6.38]: https://github.com/affise/sdk-ios/compare/1.6.37...1.6.38
-[1.6.37]: https://github.com/affise/sdk-ios/compare/1.6.36...1.6.37
-[1.6.36]: https://github.com/affise/sdk-ios/compare/1.6.35...1.6.36
-[1.6.35]: https://github.com/affise/sdk-ios/compare/1.6.34...1.6.35
-[1.6.34]: https://github.com/affise/sdk-ios/compare/1.6.33...1.6.34
-[1.6.33]: https://github.com/affise/sdk-ios/compare/1.6.32...1.6.33
-[1.6.32]: https://github.com/affise/sdk-ios/compare/1.6.31...1.6.32
-[1.6.31]: https://github.com/affise/sdk-ios/compare/1.6.30...1.6.31
-[1.6.30]: https://github.com/affise/sdk-ios/compare/1.6.29...1.6.30
-[1.6.29]: https://github.com/affise/sdk-ios/compare/1.6.28...1.6.29
-[1.6.28]: https://github.com/affise/sdk-ios/compare/1.6.27...1.6.28
+[1.6.54]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.53...1.6.54
+[1.6.53]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.52...1.6.53
+[1.6.52]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.51...1.6.52
+[1.6.51]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.50...1.6.51
+[1.6.50]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.49...1.6.50
+[1.6.49]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.48...1.6.49
+[1.6.48]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.47...1.6.48
+[1.6.47]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.46...1.6.47
+[1.6.46]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.45...1.6.46
+[1.6.45]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.44...1.6.45
+[1.6.44]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.43...1.6.44
+[1.6.43]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.42...1.6.43
+[1.6.42]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.41...1.6.42
+[1.6.41]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.40...1.6.41
+[1.6.40]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.39...1.6.40
+[1.6.39]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.38...1.6.39
+[1.6.38]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.37...1.6.38
+[1.6.37]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.36...1.6.37
+[1.6.36]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.35...1.6.36
+[1.6.35]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.34...1.6.35
+[1.6.34]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.33...1.6.34
+[1.6.33]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.32...1.6.33
+[1.6.32]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.31...1.6.32
+[1.6.31]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.30...1.6.31
+[1.6.30]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.29...1.6.30
+[1.6.29]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.28...1.6.29
+[1.6.28]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.27...1.6.28

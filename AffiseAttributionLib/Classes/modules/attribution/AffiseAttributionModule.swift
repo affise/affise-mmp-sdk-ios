@@ -17,6 +17,9 @@ public class AffiseAttributionModule :  NSObject,  AffiseAttributionModuleApi {
     
     public let Subscription: AffiseModuleSubscriptionApi = AffiseSubscription()
 
+    @objc
+    public let TikTok: AffiseModuleTikTokApi = AffiseTikTok()
+
     /**
      * Get module status
      */

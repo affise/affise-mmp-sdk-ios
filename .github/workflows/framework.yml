@@ -40,11 +40,21 @@ jobs:
           make install
 
       - name: Create AffiseAttributionLib XCFramework
-        run: swift create-xcframework AffiseAttributionLib AffiseModuleAdvertising AffiseModuleAdService AffiseModuleAppsFlyer AffiseModuleLink AffiseModulePersistent AffiseModuleStatus AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+        continue-on-error: true
+        run: |
+          swift create-xcframework AffiseAttributionLib --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleAdvertising --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleAdService --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleAppsFlyer --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleLink --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModulePersistent --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleStatus --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+          swift create-xcframework AffiseModuleTikTok --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
 
       # Release
       - name: Release
-        if: ${{ always() }}
+        if: ${{ !cancelled() }}
         id: create_release
         uses: actions/create-release@v1
         env:
@@ -57,7 +67,7 @@ jobs:
       
       # Upload AffiseAttributionLib
       - name: Upload Release AffiseAttributionLib Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +79,7 @@ jobs:
 
       # Upload AffiseModuleAdService
       - name: Upload Release AffiseModuleAdService Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -81,7 +91,7 @@ jobs:
 
       # Upload AffiseModuleAdvertising
       - name: Upload Release AffiseModuleAdvertising Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -93,7 +103,7 @@ jobs:
 
       # Upload AffiseModuleAppsFlyer
       - name: Upload Release AffiseModuleAppsFlyer Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -105,7 +115,7 @@ jobs:
 
       # Upload AffiseModuleLink
       - name: Upload Release AffiseModuleLink Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -117,7 +127,7 @@ jobs:
 
       # Upload AffiseModulePersistent
       - name: Upload Release AffiseModulePersistent Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -129,7 +139,7 @@ jobs:
 
       # Upload AffiseModuleStatus
       - name: Upload Release AffiseModuleStatus Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -141,7 +151,7 @@ jobs:
 
       # Upload AffiseModuleSubscription
       - name: Upload Release AffiseModuleSubscription Framework 📦
-        if: ${{ success() }}
+        continue-on-error: true
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -151,9 +161,21 @@ jobs:
           asset_name: AffiseModuleSubscription-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
           asset_content_type: application/zip
 
+      # Upload AffiseModuleTikTok
+      - name: Upload Release AffiseModuleTikTok Framework 📦
+        continue-on-error: true
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./AffiseModuleTikTok.zip
+          asset_name: AffiseModuleTikTok-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+          asset_content_type: application/zip
+
       # # Upload AffiseSKAdNetwork
+      #   continue-on-error: true
       # - name: Upload Release AffiseSKAdNetwork Framework 📦
-      #   if: ${{ success() }}
       #   uses: actions/upload-release-asset@v1
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

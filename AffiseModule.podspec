@@ -8,14 +8,14 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.53"
+  s.version      = ENV["LIB_VERSION"] || "1.6.54"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
-  s.homepage     = "https://github.com/affise/sdk-ios"
+  s.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author       = { "Affise" => "support@affise.com" }
   s.source       = {
-     :git => "https://github.com/affise/sdk-ios.git", 
+     :git => "https://github.com/affise/affise-mmp-sdk-ios.git", 
      :tag => "#{s.version}", 
      :submodules => true
   }
@@ -53,5 +53,9 @@ Pod::Spec.new do |s|
   s.subspec "Subscription" do |sub|
     sub.source_files = "AffiseModule/Subscription/Classes/**/*.{swift}"
     sub.framework  = "StoreKit"
+  end
+  
+  s.subspec "TikTok" do |sub|
+    sub.source_files = "AffiseModule/TikTok/Classes/**/*.{swift}"
   end
 end

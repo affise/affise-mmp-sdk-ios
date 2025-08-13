@@ -17,6 +17,7 @@ let package = Package(
         .library(name: "AffiseModulePersistent", targets: ["AffiseModulePersistent"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
         .library(name: "AffiseModuleSubscription", targets: ["AffiseModuleSubscription"]),
+        .library(name: "AffiseModuleTikTok", targets: ["AffiseModuleTikTok"]),
         .library(name: "AffiseSKAdNetwork", targets: ["AffiseSKAdNetwork", "AffiseInternalWrapperObjC"]),
         .library(name: "AffiseInternal", targets: ["AffiseInternal"]),
     ],
@@ -76,6 +77,12 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("StoreKit"),
             ]
+        ),
+        .target(
+            name: "AffiseModuleTikTok",
+            dependencies: ["AffiseAttributionLib"],
+            path: "AffiseModule/TikTok",
+            sources: [ "Classes" ]
         ),
         .target(
             name: "AffiseSKAdNetwork",

@@ -34,7 +34,7 @@ open class UserCustomEvent : NativeEvent {
     /**
      * For internal use only
      */
-    public func internalAddRawParameters(_ parameters: [String:Any]) -> Event {
+    public func internalAddRawParameters(_ parameters: [AnyHashable:Any?]?) -> Event {
         addRawParameters(parameters)
         return self
     }

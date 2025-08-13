@@ -4,15 +4,16 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/AdService`  | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Advertising`  | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/AppsFlyer`    | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/AdService`  | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Advertising`  | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/AppsFlyer`    | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/TikTok`       | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -30,6 +31,7 @@
       - [Module Link](#module-link)
       - [Module Status](#module-status)
       - [Module Subscription](#module-subscription)
+      - [Module TikTok](#module-tiktok)
     - [Requirements](#requirements)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
@@ -101,7 +103,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.6.53'
+affise_version = '1.6.54'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -110,20 +112,22 @@ pod 'AffiseModule/Advertising', affise_version
 pod 'AffiseModule/Link', affise_version
 pod 'AffiseModule/Status', affise_version
 pod 'AffiseModule/Subscription', affise_version
+pod 'AffiseModule/TikTok', affise_version
 ```
 
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.6.53'
+affise_version = '1.6.54'
 # Affise SDK library
-pod 'AffiseAttributionLib', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
+pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
-pod 'AffiseModule/AdService', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
-pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
-pod 'AffiseModule/Link', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
-pod 'AffiseModule/Status', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
-pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/AdService', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Link', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Status', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/TikTok', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 ```
 
 ### Integrate as Swift Package Manager
@@ -132,7 +136,7 @@ To add the SDK using SPM:
 
 1. Open XCode project, navigate to `File / Add Packages`.
 
-2. In the `Add New Package` window enter `https://github.com/affise/sdk-ios` in `search` field.
+2. In the `Add New Package` window enter `https://github.com/affise/affise-mmp-sdk-ios` in `search` field.
 
 3. Click on the `Add Package` button.
 
@@ -233,13 +237,14 @@ Affise
 
 | Module         | Version                                                                              | Start    |
 | -------------- |:------------------------------------------------------------------------------------:|----------|
-| `AdService`   | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Advertising`  | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
-| `AppsFlyer`    | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Link`         | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Persistent`   | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Status`       | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
-| `Subscription` | [`1.6.53`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `AdService`    | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Advertising`  | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Manual` |
+| `AppsFlyer`    | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Link`         | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Persistent`   | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Status`       | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `Subscription` | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
+| `TikTok`       | [`1.6.54`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) | `Auto`   |
 
 If module start type is `manual`, then call:
 
@@ -257,7 +262,7 @@ Affise.Module.getModulesInstalled()
 
 `iOS 14.3+`
 
-Sends `attributionToken` from `AdServices` `AAAttribution.attributionToken()` to Affise server
+Sends `attributionToken` from `AdServices` framework `AAAttribution.attributionToken()` to Affise server
 
 #### Module Advertising
 
@@ -378,6 +383,47 @@ Is Module present:
 Affise.Module.Subscription.hasModule()
 ```
 
+#### Module TikTok
+
+> **Warning**
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> Module TikTok requires [TikTok Business iOS SDK](https://github.com/tiktok/tiktok-business-ios-sdk) `1.5.0+`
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
+Send TikTok event data to Affise [TikTok Docs](https://business-api.tiktok.com/gateway/docs/index?identify_key=c0138ffadd90a955c1f0670a56fe348d1d40680b3c89461e09f78ed26785164b&language=ENGLISH&doc_id=1739585432134657#item-link-3.2.2%20Content%20parameters%20for%20standard%20events)
+
+
+```swift
+let event: TikTokContentsEvent = TikTokAddToCartEvent()
+event.setContentId("ABC")
+event.setCurrency(TTCurrency.USD)
+event.setDescription("Description of the product")
+event.setContentType("Type of the product")
+event.setValue("4.99")
+
+let eventContent = TikTokContentParams()
+eventContent.price = 4.99
+eventContent.quantity = 1
+eventContent.brand = "Brand of the product"
+eventContent.contentName = "Name of the product"
+event.setContents([eventContent]) // You can set several content parameters in an array
+
+// Send TikTok event
+TikTokBusiness.trackTTEvent(event)
+
+// Send TikTok event data to Affise
+Affise.Module.TikTok.sendEvent(event.eventName, properties: event.properties, eventId: event.eventId)
+```
+
+Is Module present:
+
+```swift
+Affise.Module.TikTok.hasModule()
+```
+
 ### Requirements
 
 Affise Advertising module uses `AppTrackingTransparency` framework to get `advertisingIdentifier`
@@ -400,14 +446,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.53'
+pod 'AffiseSKAdNetwork', '1.6.54'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/sdk-ios.git', :tag => '1.6.53'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.6.54'
 ```
 
 For `swift` use:
@@ -955,9 +1001,7 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
 
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
 
-```swift
-Affise.addPushToken(token)
-```
+See example [Push token tracking](#push-token-tracking)
 
 ## Links
 

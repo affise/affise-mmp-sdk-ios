@@ -47,6 +47,7 @@ internal class DataName {
     static let NUMBER_OF_UNITS = "numberOfUnits"
     static let PRODUCT_DETAILS = "productDetails"
 
+    static let EVENT_ID = "eventId"
     static let EVENT_NAME = "eventName"
     static let EVENT_VALUES = "eventValues"
     static let PUSH_TOKEN = "push_token"

@@ -10,16 +10,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        // Initialize https://github.com/affise/sdk-ios#initialize
+        // Initialize https://github.com/affise/affise-mmp-sdk-ios#initialize
         Affise
             .settings(
                 affiseAppId: "129",
                 secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
             )
             .setProduction(false) //To enable debug methods set Production to false
-            .start(app: application, launchOptions: launchOptions) // Start Affise SDK
+            .start(app: application, launchOptions: launchOptions) // Start Affise SDK        
         
-        // Deeplinks https://github.com/affise/sdk-ios#deeplinks
+        // Deeplinks https://github.com/affise/affise-mmp-sdk-ios#deeplinks
         Affise.registerDeeplinkCallback { [weak self] value in
             self?.showAlert(
                 title: "Deeplink",
@@ -35,22 +35,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        // StoreKit Ad Network https://github.com/affise/sdk-ios#storekit-ad-network
+        // StoreKit Ad Network https://github.com/affise/affise-mmp-sdk-ios#storekit-ad-network
 //        AffiseSKAd.register { error in
 //            // handle error
 //        }
 
-        // StoreKit Ad Network https://github.com/affise/sdk-ios#storekit-ad-network
+        // StoreKit Ad Network https://github.com/affise/affise-mmp-sdk-ios#storekit-ad-network
 //        AffiseSKAd.updatePostbackConversionValue(fineValue: 1, coarseValue: CoarseConversionValue.medium) { error in
 //            // handle error
 //        }
      
-        // Get module state https://github.com/affise/sdk-ios#get-module-state
+        // Get module state https://github.com/affise/affise-mmp-sdk-ios#get-module-state
 //        Affise.Module.getStatus(AffiseModules.Status) { result in
 //            // handle status
 //        }
         
-        // Debug: Validate credentials https://github.com/affise/sdk-ios#validate-credentials
+        // Debug: Validate credentials https://github.com/affise/affise-mmp-sdk-ios#validate-credentials
 //        Affise.Debug.validate { status in
 //            debugPrint("Affise: validate = \(status)")
 //        }

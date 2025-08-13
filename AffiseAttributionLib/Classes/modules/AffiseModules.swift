@@ -10,6 +10,7 @@ public enum AffiseModules: Int {
     case Persistent
     case Status
     case Subscription
+    case TikTok
     
     internal var enumValue: String {
         switch self {
@@ -20,6 +21,7 @@ public enum AffiseModules: Int {
         case .Persistent: return "Persistent"
         case .Status: return "Status"
         case .Subscription: return "Subscription"
+        case .TikTok: return "TikTok"
         }
     }
 }
