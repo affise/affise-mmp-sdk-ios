@@ -8,10 +8,14 @@ internal protocol AffiseModuleApiWrapper: AnyObject {
 
 extension AffiseModuleApiWrapper {
     
+    internal var moduleManager: AffiseModuleManager? {
+        get { Affise.api?.moduleManager }
+    }
+    
     internal var moduleApi: API? {
         get {
             if api == nil {
-                api = Affise.api?.moduleManager.api(module) as? API
+                api = moduleManager?.api(module) as? API
             }
             return api
         }

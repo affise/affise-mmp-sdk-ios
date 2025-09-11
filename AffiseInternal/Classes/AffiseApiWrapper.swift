@@ -105,7 +105,6 @@ public class AffiseApiWrapper: NSObject {
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////
-        case .MODULE_START: callModuleStart(api, map: map, result: result)
         case .GET_MODULES_INSTALLED: callGetModulesInstalled(api, map: map, result: result)
         case .GET_STATUS_CALLBACK: callGetStatusCallback(api, map: map, result: result)
         
@@ -121,6 +120,9 @@ public class AffiseApiWrapper: NSObject {
 
         // TikTok Module
         case .MODULE_TIKTOK_EVENT: callModuleTikTokEvent(api, map: map, result: result)
+        
+        // Advertising Module
+        case .MODULE_ADVERTISING_START: callModuleAdvertisingStart(api, map: map, result: result) 
         ////////////////////////////////////////
         // modules
         ////////////////////////////////////////
@@ -524,20 +526,6 @@ public class AffiseApiWrapper: NSObject {
     ////////////////////////////////////////
     // modules
     ////////////////////////////////////////
-    private func callModuleStart(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
-        guard let name: String = map.opt(api) else {
-            result?.error("api [\(api.method)]: value not set")
-            return
-        }
-
-        guard let module = AffiseModules.from(name) else {
-            result?.error("api [\(api.method)]: no valid AffiseModules")
-            return
-        }
-
-        result?.success(Affise.Module.moduleStart(module))
-    }
-
     private func callGetModulesInstalled(_: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
         let data: [String] = Affise.Module.getModulesInstalled().map { $0.description }
         result?.success(data)
@@ -672,6 +660,13 @@ public class AffiseApiWrapper: NSObject {
         let eventId: String? = data.opt(DataName.EVENT_ID)
 
         Affise.Module.TikTok.sendEvent(eventName, properties: properties, eventId: eventId)
+        result?.success(nil)
+    }
+
+
+    // Advertising Module
+    private func callModuleAdvertisingStart(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) { 
+        Affise.Module.Advertising.startModule()
         result?.success(nil)
     }
     ////////////////////////////////////////

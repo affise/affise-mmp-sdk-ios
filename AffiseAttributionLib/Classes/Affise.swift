@@ -257,16 +257,6 @@ public final class Affise: NSObject {
     public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
         api?.moduleManager.status(module, onComplete)
     }
-    
-    /**
-     * Manual module start
-     */
-    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.moduleStart")
-    @objc
-    @discardableResult
-    public static func moduleStart(_ module: AffiseModules) -> Bool {
-        return api?.moduleManager.manualStart(module) ?? false
-    }
 
     /**
      * Get installed modules

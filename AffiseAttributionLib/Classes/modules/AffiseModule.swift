@@ -33,10 +33,6 @@ open class AffiseModule: NSObject {
 
     }
 
-    open func isManual() -> Bool {
-        false
-    }
-
     open func providers() -> [Provider] {
         return []
     }

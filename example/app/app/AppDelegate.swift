@@ -17,7 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
             )
             .setProduction(false) //To enable debug methods set Production to false
-            .start(app: application, launchOptions: launchOptions) // Start Affise SDK        
+            .setDisableModules([
+                .Advertising
+            ])
+            .start(app: application, launchOptions: launchOptions) // Start Affise SDK       
+
+        // Module Advertising https://github.com/affise/affise-mmp-sdk-ios#module-advertising
+        // Affise.Module.Advertising.startModule()
         
         // Deeplinks https://github.com/affise/affise-mmp-sdk-ios#deeplinks
         Affise.registerDeeplinkCallback { [weak self] value in

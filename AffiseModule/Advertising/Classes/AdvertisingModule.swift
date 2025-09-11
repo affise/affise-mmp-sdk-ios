@@ -2,7 +2,7 @@ import AffiseAttributionLib
 import Foundation
 
 @objc(AffiseAdvertisingModule)
-public final class AdvertisingModule: AffiseModule {
+public final class AdvertisingModule: AffiseModule, AffiseAdvertisingApi {
 
     public override var version: String { BuildConfig.AFFISE_VERSION }
 
@@ -12,19 +12,15 @@ public final class AdvertisingModule: AffiseModule {
 
     private var newProviders: [Provider] = []
 
-    override public func isManual() -> Bool {
-        true
+    override public func providers() -> [Provider] {
+        newProviders
     }
 
-    override public func start() {
+    public func startModule() {
         advertisingIdManager.initialize()
         
         newProviders = [
             adidProvider
         ]
-    }
-
-    override public func providers() -> [Provider] {
-        newProviders
     }
 }

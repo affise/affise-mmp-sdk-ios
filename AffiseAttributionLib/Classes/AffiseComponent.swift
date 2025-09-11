@@ -192,7 +192,8 @@ internal class AffiseComponent: AffiseApi {
     lazy var moduleManager: AffiseModuleManager = AffiseModuleManager(
         bundle: bundle,
         logsManager: logsManager,
-        postBackModelFactory: postBackModelFactory
+        postBackModelFactory: postBackModelFactory,
+        initProperties: initProperties
     )
 
     lazy var debugValidateUseCase: DebugValidateUseCase = DebugValidateUseCaseImpl(

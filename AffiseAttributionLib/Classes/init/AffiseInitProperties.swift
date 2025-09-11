@@ -1,6 +1,6 @@
 import Foundation
 
-@objc
+
 public class AffiseInitProperties: NSObject {
     let affiseAppId: String?
     let partParamName: String?
@@ -11,8 +11,9 @@ public class AffiseInitProperties: NSObject {
     let domain: String?
     let onInitSuccessHandler: OnInitSuccessHandler?
     let onInitErrorHandler: OnInitErrorHandler?
+    // let configValues: [AffiseConfig: Any]
+    let disableModules: [AffiseModules]
     
-    @objc
     public init(
         affiseAppId: String?,
         partParamName: String? = nil,
@@ -22,7 +23,9 @@ public class AffiseInitProperties: NSObject {
         secretKey: String? = nil,
         domain: String? = nil,
         onInitSuccessHandler: OnInitSuccessHandler? = nil,
-        onInitErrorHandler: OnInitErrorHandler? = nil
+        onInitErrorHandler: OnInitErrorHandler? = nil,
+        // configValues: [AffiseConfig: Any] = [:],
+        disableModules: [AffiseModules] = []
     ) {
         self.affiseAppId = affiseAppId
         self.partParamName = partParamName
@@ -33,11 +36,12 @@ public class AffiseInitProperties: NSObject {
         self.domain = domain
         self.onInitSuccessHandler = onInitSuccessHandler
         self.onInitErrorHandler = onInitErrorHandler
+        // self.configValues = configValues
+        self.disableModules = disableModules
         
         CloudConfig.setupDomain(domain)
     }
 
-    @objc
     public convenience init(
         affiseAppId: String,
         secretKey: String
@@ -51,11 +55,12 @@ public class AffiseInitProperties: NSObject {
             secretKey: secretKey,
             domain: nil,
             onInitSuccessHandler: nil,
-            onInitErrorHandler: nil
+            onInitErrorHandler: nil,
+            // configValues: [:],
+            disableModules: []
         )
     }
 
-    @objc
     public convenience init(
         affiseAppId: String,
         secretKey: String,
@@ -70,7 +75,9 @@ public class AffiseInitProperties: NSObject {
             secretKey: secretKey,
             domain: nil,
             onInitSuccessHandler: nil,
-            onInitErrorHandler: nil
+            onInitErrorHandler: nil,
+            // configValues: [:],
+            disableModules: []
         )
     }
 }

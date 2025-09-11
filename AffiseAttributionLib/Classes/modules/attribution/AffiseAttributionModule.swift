@@ -10,6 +10,9 @@ public class AffiseAttributionModule :  NSObject,  AffiseAttributionModuleApi {
     }
 
     @objc
+    public let Advertising: AffiseModuleAdvertisingApi = AffiseAdvertising()
+
+    @objc
     public let AppsFlyer: AffiseModuleAppsFlyerApi = AffiseAppsFlyer()
 
     @objc
@@ -26,15 +29,6 @@ public class AffiseAttributionModule :  NSObject,  AffiseAttributionModuleApi {
     @objc
     public func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
         api?.moduleManager.status(module, onComplete)
-    }
-    
-    /**
-     * Manual module start
-     */
-    @objc
-    @discardableResult
-    public func moduleStart(_ module: AffiseModules) -> Bool {
-        return api?.moduleManager.manualStart(module) ?? false
     }
 
     /**

@@ -50,6 +50,6 @@ internal class DataName {
     static let EVENT_ID = "eventId"
     static let EVENT_NAME = "eventName"
     static let EVENT_VALUES = "eventValues"
-    static let PUSH_TOKEN = "push_token"
-    static let PUSH_TOKEN_SERVICE = "push_token_service"
+    static let PUSH_TOKEN = "pushToken"
+    static let PUSH_TOKEN_SERVICE = "pushTokenService"
 }

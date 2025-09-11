@@ -13,6 +13,8 @@ public class AffiseSettings: NSObject {
     private var domain: String?
     private var onInitSuccessHandler: OnInitSuccessHandler?
     private var onInitErrorHandler: OnInitErrorHandler?
+    private var configValues: [AffiseConfig: Any] = [:]
+    private var disableModules: [AffiseModules] = []
     
     @objc
     internal init(
@@ -86,6 +88,36 @@ public class AffiseSettings: NSObject {
         self.onInitErrorHandler = onInitErrorHandler
         return self
     }
+
+    /**
+     * Set [configValues] value
+     */
+    // @objc
+    // public func setConfigValue(_ key: AffiseConfig, _ value: Any) -> AffiseSettings {
+    //     self.configValues[key] = value
+    //     return self
+    // }
+
+    /**
+     * Set [configValues] values
+     */
+    // @objc
+    // public func setConfigValues(_ configValues: [AffiseConfig: Any]) -> AffiseSettings {
+    //     for (key, value) in configValues {
+    //         self.configValues[key] = value
+    //     }
+    //     return self
+    // }
+    
+    @objc(setDisableModules:)
+    public func setDisableModulesObjc(_ disableModules: Array<Int>) -> AffiseSettings {
+        return setDisableModules(disableModules.compactMap { AffiseModules(rawValue: $0)})
+    }
+
+    public func setDisableModules(_ disableModules: [AffiseModules]) -> AffiseSettings {
+        self.disableModules = disableModules
+        return self
+    }
     
     private func getInitProperties() -> AffiseInitProperties {
         return AffiseInitProperties(
@@ -97,7 +129,9 @@ public class AffiseSettings: NSObject {
             secretKey: secretKey,
             domain: domain,
             onInitSuccessHandler: onInitSuccessHandler,
-            onInitErrorHandler: onInitErrorHandler
+            onInitErrorHandler: onInitErrorHandler,
+            // configValues: configValues,
+            disableModules: disableModules
         )
     }
     

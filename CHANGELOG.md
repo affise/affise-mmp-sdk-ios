@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.55] - 2025-09-11
+
+### Added
+
+- Api `Affise.settings.setDisableModules`
+
+### Removed
+
+- Api `Affise.Module.moduleStart`
+  
 ## [1.6.54] - 2025-08-13
 
 ### Added
@@ -223,6 +233,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.55]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.54...1.6.55
 [1.6.54]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.53...1.6.54
 [1.6.53]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.52...1.6.53
 [1.6.52]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.51...1.6.52

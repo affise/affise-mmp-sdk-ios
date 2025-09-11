@@ -7,16 +7,23 @@ internal class AffiseModuleManager {
     private let bundle: Bundle
     private let logsManager: LogsManager
     private let postBackModelFactory: PostBackModelFactory
+    private let initProperties: AffiseInitProperties
+
     private var modules: [AffiseModules:AffiseModule] = [:]
+    private lazy var disabledModules: [AffiseModules] = {
+        initProperties.disableModules
+    }()
 
     init(
         bundle: Bundle,
         logsManager: LogsManager,
-        postBackModelFactory: PostBackModelFactory
+        postBackModelFactory: PostBackModelFactory,
+        initProperties: AffiseInitProperties
     ) {
         self.bundle = bundle
         self.logsManager = logsManager
         self.postBackModelFactory = postBackModelFactory
+        self.initProperties = initProperties
     }
 
     func initialize(
@@ -31,21 +38,12 @@ internal class AffiseModuleManager {
                 providers: postBackModelFactory.getProviders()
             )
             
-            if module.isManual() == false {
-                moduleStart(module)
-            }
+            moduleStart(module)
         }
     }
 
     func getModules() -> [AffiseModules] {
         return Array(modules.keys)
-    }
-
-    func manualStart(_ module: AffiseModules) -> Bool {
-        guard let affiseModule: AffiseModule = getModule(module) else { return false }
-        if affiseModule.isManual() == false { return false }
-        moduleStart(affiseModule)
-        return true
     }
 
     func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
@@ -55,6 +53,12 @@ internal class AffiseModuleManager {
     private func moduleStart(_ module: AffiseModule) {
         module.start()
         postBackModelFactory.addProviders(module.providers())
+    }
+
+    func updateProviders(_ module: AffiseModules) {
+        if let providers = getModule(module)?.providers() {
+            postBackModelFactory.addProviders(providers)
+        }
     }
     
     private func classType(_ name: AffiseModules) -> AffiseModule.Type? {
@@ -73,14 +77,16 @@ internal class AffiseModuleManager {
     }
     
     private func initAffiseModules(_ callback: (_ module: AffiseModule) -> Void) {
-        for name in AffiseModules.values() {
-            guard let cls = classType(name) else { continue }
+        for moduleName in AffiseModules.values() {
+            if disabledModules.contains(moduleName) { continue }
+
+            guard let cls = classType(moduleName) else { continue }
             let module = cls.init()
             if module.version == BuildConfig.AFFISE_VERSION {
-                modules[name] = module
+                modules[moduleName] = module
                 callback(module)
             } else {
-                print(AffiseModuleError.version(name: name, module: module).localizedDescription)
+                print(AffiseModuleError.version(name: moduleName, module: module).localizedDescription)
             }
         }
     }

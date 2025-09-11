@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseAttributionLib"
-  spec.version      = ENV['LIB_VERSION'] || "1.6.54"
+  spec.version      = ENV['LIB_VERSION'] || "1.6.55"
   spec.summary      = "Affise Attribution iOS library"
   spec.description  = "Affise SDK is a software you can use to collect app usage statistics, device identifiers, deeplink usage, track install referrer."
   spec.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
