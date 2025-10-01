@@ -4,16 +4,16 @@
 
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
-| `AffiseAttributionLib`      | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/AdService`  | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Advertising`  | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/AppsFlyer`    | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/TikTok`       | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseAttributionLib`      | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
+| `AffiseSKAdNetwork`         | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/AdService`  | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Advertising`  | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/AppsFlyer`    | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/TikTok`       | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
@@ -23,6 +23,7 @@
     - [Integrate as Cocoapods](#integrate-as-cocoapods)
     - [Integrate as Swift Package Manager](#integrate-as-swift-package-manager)
     - [Initialize](#initialize)
+      - [Initialization callbacks](#initialization-callbacks)
       - [Domain](#domain)
     - [Modules](#modules)
       - [Installed active modules](#installed-active-modules)
@@ -31,6 +32,7 @@
       - [Module Advertising](#module-advertising)
       - [Module AppsFlyer](#module-appsflyer)
       - [Module Link](#module-link)
+      - [Module Persistent](#module-persistent)
       - [Module Status](#module-status)
       - [Module Subscription](#module-subscription)
       - [Module TikTok](#module-tiktok)
@@ -105,7 +107,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.6.55'
+affise_version = '1.6.56'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -120,7 +122,7 @@ pod 'AffiseModule/TikTok', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.6.55'
+affise_version = '1.6.56'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
@@ -199,7 +201,9 @@ For `objective-c` use:
 @end
 ```
 
-Check if library is initialized
+#### Initialization callbacks
+
+Check Affise library initialization
 
 ```swift
 Affise
@@ -208,7 +212,12 @@ Affise
         secretKey: "Your secretKey" 
     )
     .setOnInitSuccess {
-        // Called then library is initialized
+        // Called if library initialization succeeded
+        debugPrint("Affise: init success")
+    }
+    .setOnInitError { error in
+        // Called if library initialization failed
+        debugPrint("Affise: init error \(error)")
     }
     .start(app: application, launchOptions: launchOptions)
 ```
@@ -239,14 +248,14 @@ Affise
 
 | Module         | Version                                                                              |
 | -------------- |:------------------------------------------------------------------------------------:|
-| `AdService`    | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `Advertising`  | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `AppsFlyer`    | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `Link`         | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `Persistent`   | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `Status`       | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `Subscription` | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
-| `TikTok`       | [`1.6.55`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AdService`    | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Advertising`  | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `AppsFlyer`    | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Link`         | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Persistent`   | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Status`       | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Subscription` | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `TikTok`       | [`1.6.56`](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 
 #### Installed active modules
 
@@ -352,6 +361,16 @@ Is Module present:
 ```swift
 Affise.Module.Link.hasModule()
 ```
+
+#### Module Persistent
+
+> [!NOTE]
+>
+> Module requires user phone to be authenticated by Apple ID
+>
+> It uses Apple `Security` framework to store protected information in user account
+
+Persist `device id` value for [Get random device Id](#get-random-device-id) on application reinstall
 
 #### Module Status
 
@@ -462,14 +481,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.6.55'
+pod 'AffiseSKAdNetwork', '1.6.56'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.6.55'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.6.56'
 ```
 
 For `swift` use:
@@ -1210,7 +1229,7 @@ Affise.getRandomUserId()
 
 > [!NOTE]
 >
-> Use [Affise Persistent Module](#modules) to make `device id` more persistent on application reinstall
+> Use [Module Persistent](#module-persistent) to make `device id` more persistent on application reinstall
 
 ```swift
 Affise.getRandomDeviceId()

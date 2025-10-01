@@ -42,12 +42,12 @@ internal class AffiseModuleManager {
         }
     }
 
-    func getModules() -> [AffiseModules] {
+    func getModulesNames() -> [AffiseModules] {
         return Array(modules.keys)
     }
 
-    func status(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-        getModule(module)?.status(onComplete) ?? onComplete([AffiseKeyValue(module.className(), "not found")])
+    func status(_ moduleName: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
+        getModule(moduleName)?.status(onComplete) ?? onComplete([AffiseKeyValue(moduleName.className(), "not found")])
     }
     
     private func moduleStart(_ module: AffiseModule) {
@@ -55,25 +55,25 @@ internal class AffiseModuleManager {
         postBackModelFactory.addProviders(module.providers())
     }
 
-    func updateProviders(_ module: AffiseModules) {
-        if let providers = getModule(module)?.providers() {
+    func updateProviders(_ moduleName: AffiseModules) {
+        if let providers = getModule(moduleName)?.providers() {
             postBackModelFactory.addProviders(providers)
         }
     }
     
-    private func classType(_ name: AffiseModules) -> AffiseModule.Type? {
-        let aClass: AnyClass? = NSClassFromString(name.className()) ?? NSClassFromString(name.classNameModule())
+    private func classType(_ moduleName: AffiseModules) -> AffiseModule.Type? {
+        let aClass: AnyClass? = NSClassFromString(moduleName.className()) ?? NSClassFromString(moduleName.classNameModule())
         guard let aClass = aClass else { return nil }  
         guard let cls = aClass as? AffiseModule.Type else { return nil }
         return cls
     }
     
-    func getModule(_ name: AffiseModules) -> AffiseModule? {
-        modules[name]
+    func getModule(_ moduleName: AffiseModules) -> AffiseModule? {
+        modules[moduleName]
     }
     
-    func hasModule(_ name: AffiseModules) -> Bool {
-        return getModule(name) != nil
+    func hasModule(_ moduleName: AffiseModules) -> Bool {
+        return getModule(moduleName) != nil
     }
     
     private func initAffiseModules(_ callback: (_ module: AffiseModule) -> Void) {
@@ -91,7 +91,7 @@ internal class AffiseModuleManager {
         }
     }
 
-    func api(_ module: AffiseModules) -> AffiseModuleApi? {
-        return getModule(module) as? AffiseModuleApi
+    func api(_ moduleName: AffiseModules) -> AffiseModuleApi? {
+        return getModule(moduleName) as? AffiseModuleApi
     }
 }

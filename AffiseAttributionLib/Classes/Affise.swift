@@ -36,7 +36,8 @@ public final class Affise: NSObject {
         if (api == nil) {
             api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
         } else {
-            debugPrint("Affise SDK is already initialized")
+            api?.initProperties.onInitErrorHandler?(AffiseError.alreadyInitialized)
+            debugPrint(AffiseError.MESSAGE_ALREADY_INITIALIZED)
         }
     }
 
@@ -264,7 +265,7 @@ public final class Affise: NSObject {
     @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalledObjc")
     @objc
     public static func getModulesInstalledObjc() -> [String] {
-        return api?.moduleManager.getModules().map { $0.description } ?? []
+        return api?.moduleManager.getModulesNames().map { $0.description } ?? []
     }
     
     /**
@@ -272,7 +273,7 @@ public final class Affise: NSObject {
      */
     @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalled")
     public static func getModulesInstalled() -> [AffiseModules] {
-        return api?.moduleManager.getModules() ?? []
+        return api?.moduleManager.getModulesNames() ?? []
     }
 
     /**

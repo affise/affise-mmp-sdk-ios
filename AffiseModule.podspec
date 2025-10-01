@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.6.55"
+  s.version      = ENV["LIB_VERSION"] || "1.6.56"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"

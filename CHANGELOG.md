@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.56] - 2025-10-01
+
+### Added
+
+- Error `SDK is already initialized` to `Affise.settings.setOnInitError`
+
 ## [1.6.55] - 2025-09-11
 
 ### Added
@@ -233,6 +239,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.56]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.55...1.6.56
 [1.6.55]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.54...1.6.55
 [1.6.54]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.53...1.6.54
 [1.6.53]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.52...1.6.53

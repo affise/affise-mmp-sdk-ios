@@ -1,6 +1,7 @@
 import Foundation
 
 internal protocol AffiseApi {
+    var initProperties: AffiseInitProperties {get}
     var firstAppOpenUseCase: FirstAppOpenUseCase {get}
     var sessionManager: SessionManager {get}
     var eventsManager: EventsManager {get}

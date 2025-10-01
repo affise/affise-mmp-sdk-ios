@@ -18,9 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             )
             .setProduction(false) //To enable debug methods set Production to false
             .setDisableModules([
-                .Advertising
+                .Advertising,
+                .Persistent,
             ])
-            .start(app: application, launchOptions: launchOptions) // Start Affise SDK       
+            .setOnInitSuccess {
+                // Initialize callback https://github.com/affise/affise-mmp-sdk-ios#initialization-callbacks
+                // Called if library initialization succeeded
+                debugPrint("Affise: init success")
+            }
+            .setOnInitError { error in
+                // Called if library initialization failed
+                debugPrint("Affise: init error \(error.localizedDescription)")
+            }
+            .start(app: application, launchOptions: launchOptions) // Start Affise SDK
 
         // Module Advertising https://github.com/affise/affise-mmp-sdk-ios#module-advertising
         // Affise.Module.Advertising.startModule()

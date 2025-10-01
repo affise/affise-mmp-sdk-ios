@@ -5,7 +5,7 @@ import UIKit
 internal class AffiseComponent: AffiseApi {
     
     private let app: UIApplication
-    private let initProperties: AffiseInitProperties
+    let initProperties: AffiseInitProperties
     private let launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     private var isReady: Bool = false
 

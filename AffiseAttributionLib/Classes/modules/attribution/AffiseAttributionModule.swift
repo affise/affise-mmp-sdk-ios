@@ -36,14 +36,14 @@ public class AffiseAttributionModule :  NSObject,  AffiseAttributionModuleApi {
      */
     @objc
     public func getModulesInstalledObjc() -> [String] {
-        return api?.moduleManager.getModules().map { $0.description } ?? []
+        return api?.moduleManager.getModulesNames().map { $0.description } ?? []
     }
     
     /**
      * Get installed modules
      */
     public func getModulesInstalled() -> [AffiseModules] {
-        return api?.moduleManager.getModules() ?? []
+        return api?.moduleManager.getModulesNames() ?? []
     }
 }
 
