@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.57] - 2025-10-22
+
+### Fixed
+
+- Fix `Affise.getDeferredDeeplinkValue`
+
 ## [1.6.56] - 2025-10-01
 
 ### Added
@@ -239,6 +245,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.57]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.56...1.6.57
 [1.6.56]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.55...1.6.56
 [1.6.55]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.54...1.6.55
 [1.6.54]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.53...1.6.54

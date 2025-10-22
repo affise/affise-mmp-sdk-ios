@@ -39,7 +39,7 @@ class RetrieveReferrerOnServerUseCase {
      */
     func getReferrerOnServerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
         handleReferrerOnServer { value in
-            callback(value?.getQueryStringParameter(key.value()))
+            callback("https://referrer/?\(value ?? "")".getQueryStringParameter(key.value()))
         }
     }
 } 
