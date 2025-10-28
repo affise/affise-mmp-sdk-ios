@@ -37,6 +37,8 @@
       - [Module Subscription](#module-subscription)
       - [Module TikTok](#module-tiktok)
     - [Requirements](#requirements)
+    - [Persistent data](#persistent-data)
+    - [Reinstall tracking](#reinstall-tracking)
   - [StoreKit Ad Network](#storekit-ad-network)
 - [Features](#features)
   - [ProviderType identifiers collection](#providertype-identifiers-collection)
@@ -57,20 +59,20 @@
   - [Push token tracking](#push-token-tracking)
     - [APNs](#apns)
     - [Firebase](#firebase)
-  - [Reinstall Uninstall tracking](#reinstall-uninstall-tracking)
+  - [Uninstall tracking](#uninstall-tracking)
   - [Links](#links)
     - [Deeplinks](#deeplinks)
     - [AppLinks](#applinks)
     - [Get deferred deeplink](#get-deferred-deeplink)
     - [Get deferred deeplink value](#get-deferred-deeplink-value)
   - [Get random user Id](#get-random-user-id)
-  - [Get random device Id](#get-random-device-id)
+  - [Get Affice device Id](#get-affice-device-id)
   - [Get providers](#get-providers)
   - [Is first run](#is-first-run)
   - [Get referrer](#get-referrer)
   - [Get referrer parameter](#get-referrer-parameter)
   - [Referrer keys](#referrer-keys)
-  - [Get module state](#get-module-state)
+  - [Get module status](#get-module-status)
   - [WebView tracking](#webview-tracking)
     - [Initialize WebView](#initialize-webview)
     - [Events tracking JS](#events-tracking-js)
@@ -114,6 +116,7 @@ pod 'AffiseAttributionLib', affise_version
 pod 'AffiseModule/AdService', affise_version
 pod 'AffiseModule/Advertising', affise_version
 pod 'AffiseModule/Link', affise_version
+pod 'AffiseModule/Persistent', affise_version
 pod 'AffiseModule/Status', affise_version
 pod 'AffiseModule/Subscription', affise_version
 pod 'AffiseModule/TikTok', affise_version
@@ -129,6 +132,7 @@ pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-io
 pod 'AffiseModule/AdService', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Link', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Persistent', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Status', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Subscription', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/TikTok', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
@@ -473,6 +477,62 @@ Open XCode project `info.plist` and add key `NSUserTrackingUsageDescription` wit
 	<string>Youre permission text</string>
 </dict>
 ```
+
+### Persistent data
+
+Some methods require to return **same data** on application reinstall
+
+It is achieved by using [Affise Persistent Module](#module-persistent)
+
+Such SDK methods are:
+
+- [Get Affice device Id](#get-affice-device-id)
+
+To simulate multiple device install for testing purpose you can use one of two options:
+
+1. Disable module dependencies:
+
+```ruby
+# Disable module dependency
+# pod 'AffiseModule/Persistent', affise_version
+```
+
+2. Disable module programmatically:
+
+```swift
+Affise
+    .settings(
+        affiseAppId: "Your appId",
+        secretKey: "Your secretKey"
+    )
+    .setDisableModules([ 
+        .Persistent, // Disable module programmatically
+    ])
+    .start(app: application, launchOptions: launchOptions)
+```
+
+### Reinstall tracking
+
+> [!NOTE]
+>
+> Read more about [Persistent data](#persistent-data)
+
+There are two working mode for [Affice device Id](#get-affice-device-id):
+
+1. Return persistent value on each reinstall
+2. Return new value on each reinstall
+
+First mode require enabling [Affise Persistent Module](#module-persistent)
+
+```ruby
+# Enable module dependency
+pod 'AffiseModule/Persistent', affise_version
+```
+
+Even after deleting application [Affice device Id](#get-affice-device-id) will be preserved and will restore on next installation
+
+Second mode is convenient for testing.
+By removing dependency or [disabling module programmatically](#manual-exclude-modules), a new [Affice device Id](#get-affice-device-id) will be generated for each **new** installation.
 
 ## StoreKit Ad Network
 
@@ -1035,7 +1095,7 @@ func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: Str
 }
 ```
 
-## Reinstall Uninstall tracking
+## Uninstall tracking
 
 Affise automaticly track reinstall events by using silent-push technology, to make this feature work, pass push token when it is recreated by user and on you application starts up
 
@@ -1224,11 +1284,15 @@ Affise.getDeferredDeeplinkValue(ReferrerKey.CLICK_ID) { deferredDeeplinkValue in
 Affise.getRandomUserId()
 ```
 
-## Get random device Id
+## Get Affice device Id
 
 > [!NOTE]
 >
 > Use [Module Persistent](#module-persistent) to make `device id` more persistent on application reinstall
+
+> [!NOTE]
+>
+> Read more about [Persistent data](#persistent-data) and [Reinstall tracking](#reinstall-tracking)
 
 ```swift
 Affise.getRandomDeviceId()
@@ -1336,7 +1400,7 @@ In examples above `ReferrerKey.CLICK_ID` is used, but many others is available:
 - `SUB_4`
 - `SUB_5`
 
-## Get module state
+## Get module status
 
 > [!CAUTION]
 >
