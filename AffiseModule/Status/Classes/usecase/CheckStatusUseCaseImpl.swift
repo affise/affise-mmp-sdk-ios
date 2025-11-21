@@ -113,7 +113,7 @@ extension CheckStatusUseCaseImpl: CheckStatusUseCase {
                     onComplete([])
                     
 //                    let httpResponse = response ?? postBackResponse
-//                    let error = AffiseError.network(status: httpResponse?.code ?? 0, message: httpResponse?.body)
+//                    let error = AffiseError.network(status: httpResponse?.code ?? 0, message: nil)
 //                    //Log error
 //                    logsManager?.addSdkError(error: AffiseError.cloud(url: url, error: error, attempts: CheckStatusUseCaseImpl.TIMINGS.count + 1, retry: true))
                 } else {

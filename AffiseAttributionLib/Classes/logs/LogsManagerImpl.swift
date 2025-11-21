@@ -116,6 +116,10 @@ extension LogsManagerImpl: LogsManager {
             data = error.localizedDescription
             code = nil
             
+            if case let .network(status, message) = error as? AffiseError {
+                code = status
+            }
+            
             //Add url
             dict.append(("endpoint", url))
             

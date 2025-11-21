@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.58] - 2025-11-21
+
+### Fixed
+
+- Fix `AffiseError` parsing
+
 ## [1.6.57] - 2025-10-22
 
 ### Fixed
@@ -245,6 +251,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.58]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.57...1.6.58
 [1.6.57]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.56...1.6.57
 [1.6.56]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.55...1.6.56
 [1.6.55]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.54...1.6.55

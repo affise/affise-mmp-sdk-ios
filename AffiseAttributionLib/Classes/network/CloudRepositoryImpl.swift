@@ -55,7 +55,7 @@ extension CloudRepositoryImpl: CloudRepository {
                 attempts = attempts - 1
                 //Check attempts
                 if (attempts == 0) {
-                    let error = AffiseError.network(status: response.code, message: response.body)
+                    let error = AffiseError.network(status: response.code, message: nil)
                     //Add throwable
                     throw AffiseError.cloud(url: url, error: error, attempts: ATTEMPTS_TO_SEND, retry: true)
                 }
