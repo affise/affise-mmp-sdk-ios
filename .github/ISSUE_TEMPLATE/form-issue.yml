@@ -1,0 +1,91 @@
+name: 🗃️ iOS Affise Issue
+description: File a Detailed Issue.
+title: "[Issue]: "
+labels: 
+  - bug
+projects:
+  - affise/affise-mmp-sdk-ios
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        `Thanks for taking the time to fill out this Issue`
+
+  - type: input
+    id: version-tag
+    attributes:
+      label: Library Version
+      description: Tell us Affise iOS library version
+      placeholder: Library Version
+    validations:
+      required: true
+
+  - type: input
+    id: xcode-version
+    attributes:
+      label: Xcode Version
+      description: Tell us Xcode version
+      placeholder: Version `16.4`, `26.0.1` etc.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ios-device
+    attributes:
+      label: Device
+      description: On which device you running
+      multiple: true
+      options:
+        - iOS device
+        - Simulator
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-what-happened
+    attributes:
+      label: What happened?
+      description: |
+        - What did happen?
+        - What did you expect to happen?
+        - Give as much detail
+      placeholder: Tell us what you see!
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue-logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant log output.
+      placeholder: Logs
+      render: shell
+
+  - type: textarea
+    id: issue-code-swift
+    attributes:
+      label: Swift code which cause a issue
+      description: If your code is in Swift. Please copy and paste any relevant Code.
+      placeholder: Swift Code
+      render: swift
+
+  - type: textarea
+    id: issue-code-objective-c
+    attributes:
+      label: Objective-C code which cause a issue
+      description: If your code is in Objective-C. Please copy and paste any relevant Code.
+      placeholder: Objective-C Code
+      render: objective-c
+
+  - type: checkboxes
+    id: issue-check
+    attributes:
+      label: I have
+      options:
+        - label: Read [Documentation](https://github.com/affise/affise-mmp-sdk-ios/blob/master/README.md)
+          required: true
+        - label: Read [Troubleshoots](https://github.com/affise/affise-mmp-sdk-ios/blob/master/README.md#troubleshoots)
+          required: true
+    validations:
+      required: true
