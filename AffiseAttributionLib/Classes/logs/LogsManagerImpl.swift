@@ -116,7 +116,7 @@ extension LogsManagerImpl: LogsManager {
             data = error.localizedDescription
             code = nil
             
-            if case let .network(status, message) = error as? AffiseError {
+            if case let .network(status, _) = error as? AffiseError {
                 code = status
             }
             

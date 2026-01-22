@@ -33,3 +33,43 @@ private func generateType1UUID() -> UUID {
 internal func generateUUID() -> UUID {
     return generateType1UUID()
 }
+
+extension String {
+    func sign(_ type: SignType) -> String {
+        if self.count < type.rawValue.count { return self }
+        return dropLast(type.rawValue.count) + type.rawValue
+    }
+
+    func toFakeUUID() -> String {
+        if self.isEmpty { return self }
+
+        var baseString = self
+        let uuidLength = 4*8
+
+        while baseString.count < uuidLength {
+            baseString += baseString
+        }
+
+        baseString = String(baseString.prefix(uuidLength))
+
+        let idx1 = baseString.index(baseString.startIndex, offsetBy: 8)
+        let idx2 = baseString.index(idx1, offsetBy: 4)
+        let idx3 = baseString.index(idx2, offsetBy: 4)
+        let idx4 = baseString.index(idx3, offsetBy: 4)
+        let idx5 = baseString.index(idx4, offsetBy: 12)
+
+        let uuid1 = String(baseString[baseString.startIndex..<idx1])
+        let uuid2 = String(baseString[idx1..<idx2])
+        let uuid3 = String(baseString[idx2..<idx3])
+        let uuid4 = String(baseString[idx3..<idx4])
+        let uuid5 = String(baseString[idx4..<idx5]) 
+
+        return "\(uuid1)-\(uuid2)-\(uuid3)-\(uuid4)-\(uuid5)"
+    }
+}
+
+enum SignType: String {
+    case RANDOM = "00"
+    case INSTALL_TIME = "01"
+    case PERSISTENT = "02"
+}

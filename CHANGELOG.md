@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.6.59] - 2026-01-22
+
+### Added
+
+- Api `Affise.getRandomUserId` added new algorithm for id generation
+- Api `Affise.getRandomDeviceId` added new algorithm for id generation
+- Error value for `AffiseError.UUID_NO_VALID_METHOD` is `22222222-2222-2222-2222-222222222222`
+- Error value for `AffiseError.UUID_NOT_INITIALIZED` is `11111111-1111-1111-1111-111111111111`
+
+### Changed
+
+- Update Api `Affise.getRandomUserId` return `AffiseError.UUID_NOT_INITIALIZED` if SDK not initialized
+- Update Api `Affise.getRandomUserId` return `AffiseError.UUID_NO_VALID_METHOD` if no valid methods to retrieve id
+- Update Api `Affise.getRandomDeviceId` return `AffiseError.UUID_NOT_INITIALIZED` if SDK not initialized
+- Update Api `Affise.getRandomDeviceId` return `AffiseError.UUID_NO_VALID_METHOD` if no valid methods to retrieve id
+
 ## [1.6.58] - 2025-11-21
 
 ### Fixed
@@ -251,6 +267,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.59]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.58...1.6.59
 [1.6.58]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.57...1.6.58
 [1.6.57]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.56...1.6.57
 [1.6.56]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.55...1.6.56

@@ -9,6 +9,8 @@ import WebKit
 @objc
 public final class Affise: NSObject {
 
+    private static let queue = DispatchQueue(label: "com.affise.AffiseComponent")
+
     /**
      * Api to communication with Affise
      */
@@ -33,11 +35,13 @@ public final class Affise: NSObject {
         app: UIApplication,
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
-        if (api == nil) {
-            api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
-        } else {
-            api?.initProperties.onInitErrorHandler?(AffiseError.alreadyInitialized)
-            debugPrint(AffiseError.MESSAGE_ALREADY_INITIALIZED)
+        queue.sync {
+            if (api == nil) {
+                api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
+            } else {
+                api?.initProperties.onInitErrorHandler?(AffiseError.alreadyInitialized)
+                debugPrint(AffiseError.ALREADY_INITIALIZED)
+            }
         }
     }
 
@@ -215,6 +219,9 @@ public final class Affise: NSObject {
      */
     @objc
     public static func getRandomUserId() -> String? {
+        if api == nil {
+            return AffiseError.UUID_NOT_INITIALIZED
+        }
         let provider: RandomUserIdProvider? = api?.postBackModelFactory.getProvider()
         return provider?.provide()
     }
@@ -224,6 +231,9 @@ public final class Affise: NSObject {
      */
     @objc
     public static func getRandomDeviceId() -> String? {
+        if api == nil {
+            return AffiseError.UUID_NOT_INITIALIZED
+        }
         let provider: AffiseDeviceIdProvider? = api?.postBackModelFactory.getProvider()
         return provider?.provide()
     }

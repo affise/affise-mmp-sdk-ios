@@ -14,4 +14,8 @@ extension AffiseAdvertising : AffiseModuleAdvertisingApi {
         moduleApi?.startModule()
         moduleManager?.updateProviders(module)
     }
+    
+    func getAdvertisingId() -> String? {
+        return moduleApi?.getAdvertisingId()
+    }
 }

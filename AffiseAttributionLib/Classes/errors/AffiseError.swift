@@ -8,7 +8,11 @@ public enum AffiseError: Error {
     case backgroundTrackingDisabledException
     case alreadyInitialized
     
-    internal static let MESSAGE_ALREADY_INITIALIZED = "Affise SDK is already initialized"
+    static let ALREADY_INITIALIZED = "Affise SDK is already initialized"
+    internal static let NOT_INITIALIZED = "Affise SDK is not initialized"
+    internal static let ERROR_READING_FROM_PREFERENCES = "error_reading_from_preferences"
+    static let UUID_NOT_INITIALIZED = "11111111-1111-1111-1111-111111111111"
+    static let UUID_NO_VALID_METHOD = "22222222-2222-2222-2222-222222222222"
 }
 
 extension AffiseError : LocalizedError {
@@ -26,7 +30,7 @@ extension AffiseError : LocalizedError {
         case .backgroundTrackingDisabledException:
             return NSLocalizedString("AffiseError.backgroundTrackingDisabledException", comment: "")
         case .alreadyInitialized:
-            return NSLocalizedString(AffiseError.MESSAGE_ALREADY_INITIALIZED, comment: "")
+            return NSLocalizedString(AffiseError.ALREADY_INITIALIZED, comment: "")
         }
     }
 

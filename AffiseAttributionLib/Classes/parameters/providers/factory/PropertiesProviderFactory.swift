@@ -6,8 +6,6 @@ import UIKit
  */
 internal class PropertiesProviderFactory {
     
-    private let app: UIApplication
-    private let bundle: Bundle
     private let firstAppOpenUseCase: FirstAppOpenUseCase
     private let webViewUseCase: WebViewUseCase
     private let sessionManager: SessionManager
@@ -23,10 +21,10 @@ internal class PropertiesProviderFactory {
     private let retrieveReferrerUseCase: RetrieveReferrerUseCase
     private let networkInfoUseCase: NetworkInfoUseCase
     private let pushTokenUseCase: PushTokenUseCase
+    private let packageInfoUseCase: PackageInfoUseCase
+    private let appUUIDs: AppUUIDs
     
     init(
-        app: UIApplication,
-        bundle: Bundle,
         firstAppOpenUseCase: FirstAppOpenUseCase,
         webViewUseCase: WebViewUseCase,
         sessionManager: SessionManager,
@@ -39,10 +37,10 @@ internal class PropertiesProviderFactory {
         remarketingUseCase: RemarketingUseCase,
         retrieveReferrerUseCase: RetrieveReferrerUseCase,
         networkInfoUseCase: NetworkInfoUseCase,
-        pushTokenUseCase: PushTokenUseCase
+        pushTokenUseCase: PushTokenUseCase,
+        packageInfoUseCase: PackageInfoUseCase,
+        appUUIDs: AppUUIDs
     ) {
-        self.app = app
-        self.bundle = bundle
         self.firstAppOpenUseCase = firstAppOpenUseCase
         self.webViewUseCase = webViewUseCase
         self.sessionManager = sessionManager
@@ -56,6 +54,8 @@ internal class PropertiesProviderFactory {
         self.retrieveReferrerUseCase = retrieveReferrerUseCase
         self.networkInfoUseCase = networkInfoUseCase
         self.pushTokenUseCase = pushTokenUseCase
+        self.packageInfoUseCase = packageInfoUseCase
+        self.appUUIDs = appUUIDs
     }
     
     func create() -> PostBackModelFactory {
@@ -67,9 +67,9 @@ internal class PropertiesProviderFactory {
             providers: [
                 UuidProvider(),
                 AffiseAppIdProvider(storage: initPropertiesStorage),
-                AffisePackageAppNameProvider(bundle: bundle),
-                AppVersionProvider(bundle: bundle),
-                AppVersionRawProvider(bundle: bundle),
+                AffisePackageAppNameProvider(useCase: packageInfoUseCase),
+                AppVersionProvider(useCase: packageInfoUseCase),
+                AppVersionRawProvider(useCase: packageInfoUseCase),
                 StoreProvider(),
                 InstalledTimeProvider(useCase: firstAppOpenUseCase),
                 firstOpenTimeProvider,
@@ -92,8 +92,8 @@ internal class PropertiesProviderFactory {
                 ProxyIpAddressProvider(),
                 DeeplinkClickPropertyProvider(deeplinkClickRepository: deeplinkClickRepository),
                 EmptyStringProvider(ProviderType.DEVICE_ATLAS_ID, order: 26.0),
-                AffiseDeviceIdProvider(useCase: firstAppOpenUseCase),
-                AffiseAltDeviceIdProvider(useCase: firstAppOpenUseCase),
+                AffiseDeviceIdProvider(useCase: appUUIDs),
+                AffiseAltDeviceIdProvider(useCase: appUUIDs),
                 RefTokenProvider(preferences: preferences),
                 RefTokensProvider(preferences: preferences),
                 UserAgentProvider(useCase: webViewUseCase),
@@ -111,7 +111,7 @@ internal class PropertiesProviderFactory {
                 SdkPlatformNameProvider(),
                 AffSDKVersionProvider(),
                 OSVersionProvider(),
-                RandomUserIdProvider(useCase: firstAppOpenUseCase),
+                RandomUserIdProvider(useCase: appUUIDs),
                 IsProductionPropertyProvider(storage: initPropertiesStorage),
                 TimezoneDeviceProvider(),
                 EmptyStringProvider(ProviderType.AFFISE_EVENT_TOKEN, order: 52.0),

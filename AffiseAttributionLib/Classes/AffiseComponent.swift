@@ -39,7 +39,7 @@ internal class AffiseComponent: AffiseApi {
                     postBackModelToJsonStringConverter
                 ]
             )
-            firstAppOpenUseCase.initialize(moduleManager: moduleManager)
+            persistentUseCase.initialize(moduleManager: moduleManager)
             firstAppOpenUseCase.onAppCreated()
             try eventsManager.initialize()
 
@@ -122,6 +122,10 @@ internal class AffiseComponent: AffiseApi {
     lazy var storeLogsUseCase: StoreLogsUseCase = StoreLogsUseCaseImpl(repository: logsRepository)
     lazy var isFirstForUserStorage: IsFirstForUserStorage = IsFirstForUserStorageImpl(logsManager: logsManager, fileManager: fileManager)
     lazy var isFirstForUserUseCase: IsFirstForUserUseCase = IsFirstForUserUseCaseImpl(isFirstForUserStorage: isFirstForUserStorage)
+    lazy var packageInfoUseCase: PackageInfoUseCase = PackageInfoUseCaseImpl(
+        bundle: bundle,
+        firstAppOpenUseCase: firstAppOpenUseCase
+    )
     lazy var initPropertiesStorage: InitPropertiesStorage = InitPropertiesStorageImpl()
     lazy var setPropertiesWhenInitUseCase: SetPropertiesWhenAppInitializedUseCase = SetPropertiesWhenAppInitializedUseCaseImpl(
         storage: initPropertiesStorage
@@ -155,19 +159,18 @@ internal class AffiseComponent: AffiseApi {
         repository: ApplicationLifecyclePreferencesRepositoryImpl(),
         lifetimeRepository: ApplicationLifetimePreferencesRepositoryImpl(userDefaults: preferences)
     )
-
+    lazy var stringToMD5Converter: StringToMD5Converter = StringToMD5Converter()
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
     lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl()
+    lazy var persistentUseCase: PersistentUseCase = PersistentUseCaseImpl()
     lazy var networkInfoUseCase: NetworkInfoUseCase = NetworkInfoUseCaseImpl()
 
     /**
      * PostBackModelFactory
      */
     lazy var postBackModelFactory: PostBackModelFactory = PropertiesProviderFactory(
-        app: app,
-        bundle: bundle,
         firstAppOpenUseCase: firstAppOpenUseCase,
         webViewUseCase: webViewUseCase,
         sessionManager: sessionManager,
@@ -180,7 +183,9 @@ internal class AffiseComponent: AffiseApi {
         remarketingUseCase: remarketingUseCase,
         retrieveReferrerUseCase: retrieveReferrerUseCase,
         networkInfoUseCase: networkInfoUseCase,
-        pushTokenUseCase: pushTokenUseCase
+        pushTokenUseCase: pushTokenUseCase,
+        packageInfoUseCase: packageInfoUseCase,
+        appUUIDs: appUUIDs
     ).create()
 
     lazy var retrieveReferrerUseCase: RetrieveReferrerUseCase = RetrieveReferrerUseCase()
@@ -206,5 +211,11 @@ internal class AffiseComponent: AffiseApi {
     lazy var debugNetworkUseCase: DebugNetworkUseCase = DebugNetworkUseCaseImpl(
         initProperties: initProperties,
         networkService: networkService
+    )
+    lazy var appUUIDs: AppUUIDs = AppUUIDsImpl(
+        preferences: preferences,
+        packageInfoUseCase: packageInfoUseCase,
+        persistentUseCase: persistentUseCase,
+        md5Converter: stringToMD5Converter
     )
 }

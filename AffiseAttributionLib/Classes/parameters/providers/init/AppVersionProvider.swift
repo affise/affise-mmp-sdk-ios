@@ -4,14 +4,14 @@ import Foundation
  * Provider for parameter [ProviderType.APP_VERSION]
  */
 class AppVersionProvider: StringPropertyProvider {
-    private let bundle: Bundle
+    private let useCase: PackageInfoUseCase
     
-    init(bundle: Bundle) {
-        self.bundle = bundle
+    init(useCase: PackageInfoUseCase) {
+        self.useCase = useCase
     }
     
     override func provide() -> String? {
-        return bundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        return useCase.getAppVersion()
     }
     
     public override func getOrder() -> Float {

@@ -6,9 +6,9 @@ import Foundation
  * @property useCase to retrieve random user id
  */
 public class RandomUserIdProvider: StringPropertyProvider {
-    private let useCase: FirstAppOpenUseCase
+    private let useCase: AppUUIDs
     
-    init(useCase: FirstAppOpenUseCase) {
+    init(useCase: AppUUIDs) {
         self.useCase = useCase
     }
     

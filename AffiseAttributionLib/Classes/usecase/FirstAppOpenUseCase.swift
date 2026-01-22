@@ -5,23 +5,16 @@ internal class FirstAppOpenUseCase {
     
     private let FIRST_OPENED = "FIRST_OPENED"
     private let FIRST_OPENED_DATE_KEY = "FIRST_OPENED_DATE_KEY"
-    private let AFF_DEVICE_ID = "AFF_DEVICE_ID"
-    private let AFF_ALT_DEVICE_ID = "AFF_ALT_DEVICE_ID"
     
     private let preferences: UserDefaults
     private var firstRun: Bool = false
     private var isFirstOpenValue: Bool = true
-    private var persistentApi: AffisePersistentApi? = nil
     
     init(
         preferences: UserDefaults
     ) {
         self.preferences = preferences
         isFirstOpenValue = preferences.value(forKey: FIRST_OPENED) as? Bool ?? true
-    }
-
-    func initialize(moduleManager: AffiseModuleManager) {
-        persistentApi = moduleManager.api(.Persistent) as? AffisePersistentApi
     }
 
     /**
@@ -42,20 +35,8 @@ internal class FirstAppOpenUseCase {
         //Create first open date
         let firstOpenDate = Date().timeIntervalSince1970
 
-        //Create affDevId
-        let affDevId = persistentApi?.getOrCreate(AFF_DEVICE_ID, generateUUID().uuidString.lowercased()) ?? generateUUID().uuidString.lowercased()
-
-        //Create affAltDevId
-        let affAltDevId = generateUUID().uuidString.lowercased()
-
-        //Create randomUserId
-        let randomUserId = generateUUID().uuidString.lowercased()
-
         //Save properties
         preferences.set(firstOpenDate, forKey: FIRST_OPENED_DATE_KEY)
-        preferences.set(affDevId, forKey: AFF_DEVICE_ID)
-        preferences.set(affAltDevId, forKey: AFF_ALT_DEVICE_ID)
-        preferences.set(randomUserId, forKey: ProviderType.RANDOM_USER_ID.provider)
         preferences.set(true, forKey: FIRST_OPENED)
     }
 
@@ -91,24 +72,4 @@ internal class FirstAppOpenUseCase {
         
         return value
     }
-    
-    /**
-     * Get devise id
-     * @return devise id
-     */
-    func getAffiseDeviseId() -> String {
-        return preferences.string(forKey: AFF_DEVICE_ID) ?? ""
-    }
-    
-    /**
-     * Get alt devise id
-     * @return alt devise id
-     */
-    func getAffiseAltDeviseId() -> String  {return preferences.string(forKey: AFF_ALT_DEVICE_ID) ?? ""}
-    
-    /**
-     * Get random user id
-     * @return random user id
-     */
-    func getRandomUserId() -> String  {return preferences.string(forKey: ProviderType.RANDOM_USER_ID.provider) ?? ""}
 }

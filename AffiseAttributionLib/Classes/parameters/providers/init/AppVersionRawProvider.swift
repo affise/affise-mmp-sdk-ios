@@ -4,14 +4,14 @@ import Foundation
  * App version number (Android) [ProviderType.APP_VERSION_RAW]
  */
 class AppVersionRawProvider: StringPropertyProvider {
-    private let bundle: Bundle
+    private let useCase: PackageInfoUseCase
     
-    init(bundle: Bundle) {
-        self.bundle = bundle
+    init(useCase: PackageInfoUseCase) {
+        self.useCase = useCase
     }
     
     override func provide() -> String? {
-        return bundle.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as? String
+        return useCase.getAppVersionRaw()
     }
     
     public override func getOrder() -> Float {

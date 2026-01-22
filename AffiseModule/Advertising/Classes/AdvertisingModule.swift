@@ -23,4 +23,8 @@ public final class AdvertisingModule: AffiseModule, AffiseAdvertisingApi {
             adidProvider
         ]
     }
+
+    public func getAdvertisingId() -> String? {
+        return advertisingIdManager.getAdvertisingId()
+    }
 }

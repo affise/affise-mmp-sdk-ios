@@ -6,9 +6,9 @@ import Foundation
  * @property useCase to retrieve affise device id
  */
 public class AffiseDeviceIdProvider: StringPropertyProvider {
-    private let useCase: FirstAppOpenUseCase
+    private let useCase: AppUUIDs
     
-    init(useCase: FirstAppOpenUseCase) {
+    init(useCase: AppUUIDs) {
         self.useCase = useCase
     }
     

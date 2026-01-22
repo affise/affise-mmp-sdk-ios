@@ -5,9 +5,9 @@
  * @property useCase to retrieve affise alt device id
  */
 class AffiseAltDeviceIdProvider: StringPropertyProvider {
-    private let useCase: FirstAppOpenUseCase
+    private let useCase: AppUUIDs
     
-    init(useCase: FirstAppOpenUseCase) {
+    init(useCase: AppUUIDs) {
         self.useCase = useCase
     }
     

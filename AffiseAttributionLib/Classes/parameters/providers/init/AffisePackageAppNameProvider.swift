@@ -5,14 +5,14 @@ import Foundation
  *
  */
 public class AffisePackageAppNameProvider: StringPropertyProvider {
-    private let bundle: Bundle
+    private let useCase: PackageInfoUseCase
     
-    init(bundle: Bundle) {
-        self.bundle = bundle
+    init(useCase: PackageInfoUseCase) {
+        self.useCase = useCase
     }
     
     public override func provide() -> String? {
-        return bundle.bundleIdentifier
+        return useCase.getPackageAppName()
     }
     
     public override func getOrder() -> Float {
