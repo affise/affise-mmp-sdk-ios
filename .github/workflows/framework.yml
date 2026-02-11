@@ -15,7 +15,7 @@ on:
 jobs:
   publish:
     name: Publish Affise SDK Frameworks
-    runs-on: macOS-13
+    runs-on: macOS-latest
 
     steps:
       - name: Checkout

@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.6.60] - 2026-02-11
+
+### Fixed
+
+- Fix `Affise.Module.Link.resolve` content downloading will be skipped
+
 ## [1.6.59] - 2026-01-22
 
 ### Added
@@ -267,6 +273,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.6.60]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.59...1.6.60
 [1.6.59]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.58...1.6.59
 [1.6.58]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.57...1.6.58
 [1.6.57]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.56...1.6.57

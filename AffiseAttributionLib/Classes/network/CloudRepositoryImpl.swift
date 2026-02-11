@@ -76,7 +76,8 @@ extension CloudRepositoryImpl: CloudRepository {
             data: converter.convert(from: data).toData(),
             timeout: TIMEOUT_SEND,
             headers: createHeaders(),
-            redirect: true
+            redirect: true,
+            skipBody: false
         )
     }
 }

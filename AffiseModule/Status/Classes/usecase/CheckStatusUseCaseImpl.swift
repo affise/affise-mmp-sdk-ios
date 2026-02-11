@@ -50,7 +50,8 @@ internal class CheckStatusUseCaseImpl {
             data: data.toData(),
             timeout: TIMEOUT_SEND,
             headers: CloudConfig.headers,
-            redirect: true
+            redirect: true,
+            skipBody: false
         )
     }
     

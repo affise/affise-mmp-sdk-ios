@@ -24,6 +24,7 @@ public protocol NetworkService {
         data: Data?,
         timeout: TimeInterval,
         headers: [String:String],
-        redirect: Bool
+        redirect: Bool,
+        skipBody: Bool
     ) -> HttpResponse
 }

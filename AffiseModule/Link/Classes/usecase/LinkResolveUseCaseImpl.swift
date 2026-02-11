@@ -44,7 +44,8 @@ class LinkResolveUseCaseImpl {
             data: nil,
             timeout: 0,
             headers: [:],
-            redirect: false
+            redirect: false,
+            skipBody: true
         )
     }
 }

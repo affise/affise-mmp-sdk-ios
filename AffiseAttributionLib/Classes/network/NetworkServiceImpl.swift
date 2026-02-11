@@ -21,7 +21,8 @@ extension NetworkServiceImpl: NetworkService {
         data: Data?,
         timeout: TimeInterval,
         headers: [String:String],
-        redirect: Bool = true
+        redirect: Bool = true,
+        skipBody: Bool = false
     ) -> HttpResponse {
         var responseCode: Int = 0
         var responseMessage: String = ""
@@ -43,7 +44,11 @@ extension NetworkServiceImpl: NetworkService {
 
         var complete: Bool = false
         
-        let task = urlSession.dataTask(redirect: redirect, with: request) { responseData, response, error in
+        let task = urlSession.dataTask(
+            redirect: redirect, 
+            skipBody: skipBody, 
+            with: request
+        ) { responseData, response, error in
             let httpResponse = (response as? HTTPURLResponse)
 
             responseBody = responseData?.toString()

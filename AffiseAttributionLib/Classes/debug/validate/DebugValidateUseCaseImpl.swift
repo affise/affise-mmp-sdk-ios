@@ -47,7 +47,8 @@ class DebugValidateUseCaseImpl {
             data: converter.convert(from: providers).toData(),
             timeout: TIMEOUT_SEND,
             headers: CloudConfig.headers,
-            redirect: true
+            redirect: true,
+            skipBody: false
         )
     }
 
