@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.7.1] - 2026-02-26
+
+### Changed
+
+- Sync versions
+
+### Removed
+
+- Deprecated Api `Affise.isInitialized`
+- Deprecated Api `Affise.getReferrerOnServer`
+- Deprecated Api `Affise.getReferrerOnServerValue`
+- Deprecated Api `Affise.getStatus`
+- Deprecated Api `Affise.getModulesInstalled`
+- Deprecated Api `Affise.getModulesInstalledObjc`
+- Deprecated Api `Affise.Module.linkResolve`
+- Deprecated Api `Affise.Module.hasSubscriptionModule`
+- Deprecated Api `Affise.Module.fetchProducts`
+- Deprecated Api `Affise.Module.purchase`
+  
 ## [1.6.60] - 2026-02-11
 
 ### Fixed
@@ -273,6 +292,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.1]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.60...1.7.1
 [1.6.60]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.59...1.6.60
 [1.6.59]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.58...1.6.59
 [1.6.58]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.57...1.6.58

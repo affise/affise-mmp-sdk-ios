@@ -3,8 +3,6 @@ import Foundation
 @objc
 public enum AffiseApiMethod: Int {
     case INIT
-    case IS_INITIALIZED
-//    case SEND_EVENTS // deprecated
     case SEND_EVENT
     case SEND_EVENT_NOW
     case ADD_PUSH_TOKEN
@@ -65,7 +63,6 @@ public enum AffiseApiMethod: Int {
     var value: String {
         switch self {
         case .INIT: return "init"
-        case .IS_INITIALIZED: return "is_initialized"
         case .SEND_EVENT: return "send_event"
         case .SEND_EVENT_NOW: return "send_event_now"
         case .ADD_PUSH_TOKEN: return "add_push_token"

@@ -66,7 +66,7 @@ internal class NoRedirectHeadOnly: NSObject, URLSessionDataDelegate {
         newRequest request: URLRequest,
         completionHandler: @escaping (URLRequest?) -> Void
     ) {
-        complete(task, response as? HTTPURLResponse)
+        complete(task, response)
         // Call the completion handler with nil to prevent the redirection from happening
         completionHandler(nil)
     }

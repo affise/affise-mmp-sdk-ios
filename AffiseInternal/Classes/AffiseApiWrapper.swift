@@ -66,7 +66,6 @@ public class AffiseApiWrapper: NSObject {
     public func call(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {
         switch api {
         case .INIT: callInit(api, map: map, result: result)
-        case .IS_INITIALIZED: callIsInitialized(api, map: map, result: result)
         case .SEND_EVENT: callSendEvent(api, map: map, result: result)
         case .SEND_EVENT_NOW: callSendEventNow(api, map: map, result: result)
         case .ADD_PUSH_TOKEN: callAddPushToken(api, map: map, result: result)
@@ -168,10 +167,6 @@ public class AffiseApiWrapper: NSObject {
             .start(app: app, launchOptions: launchOptions)
 
         result?.success(nil)
-    }
-
-    private func callIsInitialized(_: AffiseApiMethod, map _: [String: Any?], result: InternalResult?) {
-        result?.success(Affise.isInitialized())
     }
 
     private func callSendEvent(_ api: AffiseApiMethod, map: [String: Any?], result: InternalResult?) {

@@ -128,7 +128,7 @@ open class Event: NSObject {
      */
     @objc
     public func send() {
-        Affise.sendEvent(self)
+        AffiseInternal.sendEvent(self)
     }
 
     /**
@@ -136,7 +136,7 @@ open class Event: NSObject {
      */
     @objc
     public func sendNow(_ success: @escaping OnSendSuccessCallback, _ failed: @escaping OnSendFailedCallback) {
-        Affise.sendEventNow(self, success, failed)
+        AffiseInternal.sendEventNow(self, success, failed)
     }
 
     @objc

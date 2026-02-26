@@ -89,8 +89,6 @@ class ViewController: UIViewController, WKScriptMessageHandler {
     func pressed(sender: UIButton!) {
         // Send event
         listEvents[sender.tag].send();
-        // or
-        // Affise.sendEvent(listEvents[sender.tag])
     }
     
     @IBAction func didValueChangedControl(_ sender: UISegmentedControl) {

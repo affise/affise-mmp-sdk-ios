@@ -44,27 +44,6 @@ public final class Affise: NSObject {
             }
         }
     }
-
-    @available(*, deprecated, message: "Use Affise.settings().setOnInitSuccess { }")
-    @objc
-    public static func isInitialized() -> Bool {
-        return api?.isInitialized() ?? false
-    }
-
-    /**
-     * Store and send [event]
-     */
-    @objc
-    internal static func sendEvent(_ event: Event) {
-        api?.storeEventUseCase.storeEvent(event: event)
-    }
-    /**
-     * Send now [event]
-     */
-    @objc
-    internal static func sendEventNow(_ event: Event, _ success: @escaping OnSendSuccessCallback, _ failed: @escaping OnSendFailedCallback) {
-        api?.immediateSendToServerUseCase.sendNow(event: event, success: success, failed: failed)
-    }
     
     /**
      * Add [pushToken]
@@ -180,25 +159,6 @@ public final class Affise: NSObject {
     }
 
     /**
-     * Get referrer on server
-     */
-    @available(*, deprecated, message: "This method will be removed", renamed: "getDeferredDeeplink")
-    @objc
-    public static func getReferrerOnServer(_ callback: @escaping OnReferrerCallback) {
-        getDeferredDeeplink(callback)
-    }
-    
-    /**
-     * Get referrer on server value
-     */
-    @available(*, deprecated, message: "This method will be removed", renamed: "getDeferredDeeplinkValue")
-    @objc
-    public static func getReferrerOnServerValue(_ key: ReferrerKey, _ callback: @escaping OnReferrerCallback) {
-        getDeferredDeeplinkValue(key, callback)
-    }
-
-
-    /**
      * Get deferred deeplink on server
      */
     @objc
@@ -258,40 +218,6 @@ public final class Affise: NSObject {
      */
     public static func isFirstRun() -> Bool {
         return api?.firstAppOpenUseCase.isFirstRun() ?? true
-    }
-
-    /**
-     * Get module status
-     */
-    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getStatus")
-    @objc
-    public static func getStatus(_ module: AffiseModules, _ onComplete: @escaping OnKeyValueCallback) {
-        api?.moduleManager.status(module, onComplete)
-    }
-
-    /**
-     * Get installed modules
-     */
-    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalledObjc")
-    @objc
-    public static func getModulesInstalledObjc() -> [String] {
-        return api?.moduleManager.getModulesNames().map { $0.description } ?? []
-    }
-    
-    /**
-     * Get installed modules
-     */
-    @available(*, deprecated, message: "Method moved to Affise.Module", renamed: "Module.getModulesInstalled")
-    public static func getModulesInstalled() -> [AffiseModules] {
-        return api?.moduleManager.getModulesNames() ?? []
-    }
-
-    /**
-     * Store internal send
-     */
-    @objc
-    internal static func sendInternalEvent(_ event: InternalEvent) {
-        api?.storeInternalEventUseCase.storeInternalEvent(event: event)
     }
     
     @objc

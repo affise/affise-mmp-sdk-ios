@@ -2,7 +2,7 @@ import Foundation
 
 internal class SendDataToServerUseCaseImpl {
     
-    private static let TIME_DELAY_SENDING: TimeInterval = 15
+    private static let TIME_DELAY_SENDING: TimeInterval = 3
     
     private let postBackModelFactory: PostBackModelFactory
     private let cloudRepository: CloudRepository
