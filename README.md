@@ -12,15 +12,15 @@
 | Pod                         | Version                   |
 | --------------------------- |:-------------------------:|
 | `AffiseAttributionLib`      | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/a/9/3/AffiseAttributionLib) |
-| `AffiseSKAdNetwork`         | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
-| `AffiseModule/AdService`  | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/Subscription` | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
-| `AffiseModule/TikTok`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseSKAdNetwork`         | [![latest](https://badges.ws/cocoapods/v/AffiseSKAdNetwork)](https://github.com/CocoaPods/Specs/tree/master/Specs/3/6/f/AffiseSKAdNetwork)    |
+| `AffiseModule/AdService`  | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Subscription` | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/TikTok`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 
 - [Affise Attribution iOS Library](#affise-attribution-ios-library)
 - [Description](#description)
