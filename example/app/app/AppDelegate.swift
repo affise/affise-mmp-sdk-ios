@@ -2,9 +2,8 @@ import UIKit
 import AffiseAttributionLib
 //import AffiseSKAdNetwork
 
-@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -13,10 +12,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initialize https://github.com/affise/affise-mmp-sdk-ios#initialize
         Affise
             .settings(
-                affiseAppId: "129",
-                secretKey: "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
+                affiseAppId: UserDefaults.standard.string(forKey: StorageKeys.appId) ?? AppSettings.DEFAULT_AFFISE_APP_ID,
+                secretKey: UserDefaults.standard.string(forKey: StorageKeys.secretKey) ?? AppSettings.DEFAULT_SECRET_KEY
             )
-            .setProduction(false) //To enable debug methods set Production to false
+            .setProduction(UserDefaults.standard.bool(forKey: StorageKeys.isProductionMode))
             .setDisableModules([
                 .Advertising,
                 .Persistent,
@@ -30,14 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Called if library initialization failed
                 debugPrint("Affise: init error \(error.localizedDescription)")
             }
+            .setDomain(UserDefaults.standard.string(forKey: StorageKeys.domain) ?? AppSettings.DEMO_DOMAIN)
             .start(app: application, launchOptions: launchOptions) // Start Affise SDK
 
         // Module Advertising https://github.com/affise/affise-mmp-sdk-ios#module-advertising
         // Affise.Module.Advertising.startModule()
         
         // Deeplinks https://github.com/affise/affise-mmp-sdk-ios#deeplinks
-        Affise.registerDeeplinkCallback { [weak self] value in
-            self?.showAlert(
+        Affise.registerDeeplinkCallback { value in
+            showAlert(
                 title: "Deeplink",
                 message: "\"\(value.deeplink)\"\n\n" +
                 "scheme: \"\(value.scheme ?? "")\"\n\n" +
@@ -71,10 +71,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            debugPrint("Affise: validate = \(status)")
 //        }
                
+        let isDebugRequest = UserDefaults.standard.bool(forKey: StorageKeys.isDebugRequest)
+        let isDebugResponse = UserDefaults.standard.bool(forKey: StorageKeys.isDebugResponse)
         // Debug: network request/response
         Affise.Debug.network { (request, response) in
-//            debugPrint("Affise: \(request)")
-           debugPrint("Affise: \(response)")
+            if isDebugRequest {
+                debugPrint("Affise: \(request)")
+            }
+            if isDebugResponse {
+                debugPrint("Affise: \(response)")
+            }
         }
         UIApplication.shared.registerForRemoteNotifications()
         return true
@@ -125,18 +131,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    func showAlert(title: String, message: String) {
-        guard let rootViewController = self.window?.rootViewController else {
-            return
-        }
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(action)
-        
-        rootViewController.present(alertController, animated: true, completion: nil)
     }
 }
 

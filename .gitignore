@@ -162,3 +162,5 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
+
+*.tmp

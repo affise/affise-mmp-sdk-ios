@@ -24,5 +24,11 @@
 		<key>UISceneConfigurations</key>
 		<dict/>
 	</dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<!-- Global Access (not recommended) -->
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
