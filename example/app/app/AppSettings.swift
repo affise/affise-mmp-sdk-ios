@@ -16,7 +16,7 @@ enum StorageKeys {
 }
 
 final class AppSettings: ObservableObject {
-    static let DEMO_DOMAIN = "https://webhook.site/0cba1724-5463-47b5-b60c-f15ac9a26804" // TODO dev
+    static let DEMO_DOMAIN = "https://tracking.affattr.com"
     static let DEFAULT_AFFISE_APP_ID = "129"
     static let DEFAULT_SECRET_KEY = "93a40b54-6f12-443f-a250-ebf67c5ee4d2"
 

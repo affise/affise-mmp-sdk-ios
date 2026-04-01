@@ -33,9 +33,10 @@ jobs:
       - name: Version Tag
         id: version_tag
         run: |
-          if [ -n "${{ inputs.version }}" ]; then
-            echo Version: ${{ inputs.version }}
-            echo "VERSION=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
+          echo ${{ github.ref_name }}
+          if [ -n "${{ inputs.tag }}" ]; then
+            echo Version: ${{ inputs.tag }}
+            echo "VERSION=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
           else
             echo Version: ${{ github.ref_name }}
             echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"

@@ -32,41 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .setDomain(UserDefaults.standard.string(forKey: StorageKeys.domain) ?? AppSettings.DEMO_DOMAIN)
             .start(app: application, launchOptions: launchOptions) // Start Affise SDK
 
-
-        AddToCartEvent("cart")
-            .addPredefinedParameter(PredefinedListString.CONTENT_IDS, listString: [
-                "{list \" success}",
-            ])
-            .addPredefinedParameter(PredefinedString.DESCRIPTION, string: "{string \" success}")
-            .addPredefinedParameter(PredefinedObject.CONTENT, object: [
-                ("sub17", "{sub17}"),
-                ("sub18", "{sub18}"),
-                ("sub29", [
-                    "{sub29}"
-                ]),
-                ("sub30", (
-                    "subsub","{sub30}"
-                ))
-            ])
-            .addPredefinedParameter(PredefinedListObject.CONTENT_LIST, listObject: [
-                [
-                    ("sub17", "{sub17}"),
-                ],
-                [
-                    ("sub29", [
-                        "{sub29}"
-                    ]),
-                    ("sub30", (
-                        "subsub","{sub30}"
-                    ))
-                ]
-            ])
-            .sendNow({
-                debugPrint("!> event sent")
-            }) { errorResponse in
-                debugPrint("!> sendNow failed: \(String(describing: errorResponse))")
-            }
-
         // Module Advertising https://github.com/affise/affise-mmp-sdk-ios#module-advertising
         // Affise.Module.Advertising.startModule()
         
