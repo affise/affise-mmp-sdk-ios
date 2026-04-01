@@ -93,7 +93,7 @@ jobs:
         continue-on-error: true
         id: tg_failed
         if: ${{ failure() }}
-        uses: cbrgm/telegram-github-action@v1
+        uses: ./.github/actions/tg
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
@@ -108,7 +108,7 @@ jobs:
         continue-on-error: true
         id: tg_success
         if: ${{ success() }}
-        uses: cbrgm/telegram-github-action@v1
+        uses: ./.github/actions/tg
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
