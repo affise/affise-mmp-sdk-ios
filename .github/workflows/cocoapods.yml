@@ -25,6 +25,8 @@ jobs:
       - name: Version Tag
         id: version_tag
         run: |
+          echo name: ${{ github.ref_name }}
+          echo ref: ${{ github.ref }}
           if [ -n "${{ inputs.version }}" ]; then
             echo Version: ${{ inputs.version }}
             echo "VERSION=${{ inputs.version }}" >> "$GITHUB_OUTPUT"
@@ -97,8 +99,8 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          parse-mode: markdown
-          disable-web-page-preview: true
+          format: markdown
+          disable_web_page_preview: true
           message: |
             🔴 iOS ${{ steps.version_tag.outputs.VERSION }} release failed
 
@@ -112,8 +114,8 @@ jobs:
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          parse-mode: markdown
-          disable-web-page-preview: true
+          format: markdown
+          disable_web_page_preview: true
           message: |
             🟢 iOS ${{ steps.version_tag.outputs.VERSION }} release
 

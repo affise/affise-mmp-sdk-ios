@@ -20,20 +20,21 @@ jobs:
 
     steps:
       - name: Checkout
-        if: ${{ inputs.tag == '' }}
+        # if: ${{ inputs.tag == '' }}
         uses: actions/checkout@v6
 
-      - name: Checkout
-        if: ${{ inputs.tag != '' }}
-        uses: actions/checkout@v6
-        with:
-          ref: refs/tags/${{ inputs.tag }}
+      # - name: Checkout
+      #   if: ${{ inputs.tag != '' }}
+      #   uses: actions/checkout@v6
+      #   with:
+      #     ref: refs/tags/${{ inputs.tag }}
  
       # Version
       - name: Version Tag
         id: version_tag
         run: |
-          echo ${{ github.ref_name }}
+          echo name: ${{ github.ref_name }}
+          echo ref: ${{ github.ref }}
           if [ -n "${{ inputs.tag }}" ]; then
             echo Version: ${{ inputs.tag }}
             echo "VERSION=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
@@ -69,7 +70,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: ${{ steps.version_tag.outputs.VERSION }}
           release_name: Affise Attribution iOS SDK ${{ steps.version_tag.outputs.VERSION }}
           draft: false
           prerelease: false
