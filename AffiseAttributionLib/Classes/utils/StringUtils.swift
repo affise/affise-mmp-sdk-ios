@@ -25,6 +25,12 @@ public extension String {
     func toJsonGuardString() -> String {
         return self.replacingOccurrences(of: "\"", with: "\\\"")
     }
+
+    internal func jsonStringUnescape() -> String {
+        return self.toJsonGuardString()
+            .replacingOccurrences(of: "{", with: "\\\\{")
+            .replacingOccurrences(of: "}", with: "\\\\}")
+    }
     
     var toSinglQuote: String {
         return self.replacingOccurrences(of: "\\\"", with: "\'")

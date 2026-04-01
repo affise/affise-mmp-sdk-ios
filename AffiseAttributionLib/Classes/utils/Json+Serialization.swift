@@ -13,3 +13,26 @@ internal extension String {
     }
 }
 
+
+internal func unescapeJson(_ data: Any) -> Any {
+    if let data = data as? String {
+        return data.jsonStringUnescape()
+    } else if let data = data as? [Any] {
+        return data.map { value in
+            return unescapeJson(value)
+        }
+    } else if let (key, value) = data as? (String, Any?) {
+        return (key, unescapeJson(value) as Any)
+    } else if let data = data as? [(String, Any?)] {
+        return data.map { value in
+            return unescapeJson(value)
+        }
+    } else if let data = data as? [[(String, Any?)]] {
+        return data.map { value in
+            return unescapeJson(value)
+        }
+    } else {
+        return data
+    }
+}
+    

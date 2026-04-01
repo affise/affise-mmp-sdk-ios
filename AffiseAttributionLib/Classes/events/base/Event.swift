@@ -61,7 +61,7 @@ open class Event: NSObject {
      */
     @objc
     public func addPredefinedParameter(_ parameter: PredefinedString, string: String) -> Event {
-        predefinedParameters.append((parameter.value(), string))
+        predefinedParameters.append((parameter.value(), unescapeJson(string)))
         return self
     }
 
@@ -70,7 +70,7 @@ open class Event: NSObject {
      */
     @objc
     public func addPredefinedParameter(_ parameter: PredefinedListString, listString: [String]) -> Event {
-        predefinedParameters.append((parameter.value(), listString))
+        predefinedParameters.append((parameter.value(), unescapeJson(listString)))
         return self
     }
 
@@ -96,7 +96,7 @@ open class Event: NSObject {
      * Add predefined [parameter] with [value] type JSON to event
      */
     public func addPredefinedParameter(_ parameter: PredefinedObject, object: [(String, Any?)]) -> Event {
-        predefinedParameters.append((parameter.value(), object))
+        predefinedParameters.append((parameter.value(), unescapeJson(object)))
         return self
     }
     /**
@@ -111,7 +111,7 @@ open class Event: NSObject {
      * Add predefined [parameter] with [value] type Array of JSON to event
      */
     public func addPredefinedParameter(_ parameter: PredefinedListObject, listObject: [[(String, Any?)]]) -> Event {
-        predefinedParameters.append((parameter.value(), listObject))
+        predefinedParameters.append((parameter.value(), unescapeJson(listObject)))
         return self
     }
 

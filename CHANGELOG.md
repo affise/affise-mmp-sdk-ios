@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.2] - 2026-04-01
+
+### Fixed
+
+- Fix `json` unescape for addPredefined user data
+
 ## [1.7.1] - 2026-02-26
 
 ### Changed
@@ -292,6 +298,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.2]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.1...1.7.2
 [1.7.1]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.60...1.7.1
 [1.6.60]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.59...1.6.60
 [1.6.59]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.6.58...1.6.59
