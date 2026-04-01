@@ -18,12 +18,12 @@ jobs:
       - name: Tg Release failed
         id: tg_failed
         if: ${{ failure() }}
-        uses: appleboy/telegram-action@master
+        uses: cbrgm/telegram-github-action@v1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          disable_web_page_preview: true
+          parse-mode: markdown
+          disable-web-page-preview: true
           message: |
             🔴 CocoaPods token is invalid
 

@@ -90,28 +90,30 @@ jobs:
           pod trunk push AffiseModule.podspec --allow-warnings --synchronous
 
       - name: Tg Release failed
+        continue-on-error: true
         id: tg_failed
         if: ${{ failure() }}
-        uses: appleboy/telegram-action@master
+        uses: cbrgm/telegram-github-action@v1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          disable_web_page_preview: true
+          parse-mode: markdown
+          disable-web-page-preview: true
           message: |
             🔴 iOS ${{ steps.version_tag.outputs.VERSION }} release failed
 
             [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
       - name: Tg Release
+        continue-on-error: true
         id: tg_success
         if: ${{ success() }}
-        uses: appleboy/telegram-action@master
+        uses: cbrgm/telegram-github-action@v1
         with:
           to: ${{ secrets.TELEGRAM_TO }}
           token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          disable_web_page_preview: true
+          parse-mode: markdown
+          disable-web-page-preview: true
           message: |
             🟢 iOS ${{ steps.version_tag.outputs.VERSION }} release
 
