@@ -43,9 +43,21 @@ jobs:
             echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Install swift-create-xcframework tool
+      - name: Clone swift xcframework tool
         run: |
           git clone https://github.com/segment-integrations/swift-create-xcframework.git
+
+      - name: Cache swift xcframework tool
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/swift-create-xcframework/.build
+          key: ${{ runner.os }}-xcframework-${{ hashFiles('swift-create-xcframework/Sources/*.swift') }}
+          restore-keys: |
+            ${{ runner.os }}-xcframework-
+
+      - name: Install swift xcframework tool
+        run: |
           cd swift-create-xcframework
           make install
 
@@ -206,7 +218,7 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            🔴 iOS ${{ steps.version_tag.outputs.VERSION }} XCFramework release failed
+            🔴 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release failed
 
             [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
@@ -221,6 +233,6 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            🟢 iOS ${{ steps.version_tag.outputs.VERSION }} XCFramework release
+            🟢 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release
 
             [Changelog](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md)

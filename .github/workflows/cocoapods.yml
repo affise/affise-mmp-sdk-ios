@@ -102,7 +102,7 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            🔴 iOS ${{ steps.version_tag.outputs.VERSION }} release failed
+            🔴 iOS `${{ steps.version_tag.outputs.VERSION }}` release failed
 
             [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
@@ -117,6 +117,6 @@ jobs:
           format: markdown
           disable_web_page_preview: true
           message: |
-            🟢 iOS ${{ steps.version_tag.outputs.VERSION }} release
+            🟢 iOS `${{ steps.version_tag.outputs.VERSION }}` release
 
             [Changelog](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md)
