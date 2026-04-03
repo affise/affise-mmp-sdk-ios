@@ -15,7 +15,7 @@ jobs:
         run: |
           pod trunk me
 
-      - name: Tg Release failed
+      - name: Tg CocoaPods Token Invalid
         id: tg_failed
         if: ${{ failure() }}
         uses: cbrgm/telegram-github-action@v1
@@ -25,6 +25,6 @@ jobs:
           parse-mode: markdown
           disable-web-page-preview: true
           message: |
-            🔴 CocoaPods token is invalid
+            ‼️ CocoaPods token is invalid ‼️
 
             [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
