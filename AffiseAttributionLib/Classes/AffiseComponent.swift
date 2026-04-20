@@ -7,51 +7,43 @@ internal class AffiseComponent: AffiseApi {
     private let app: UIApplication
     let initProperties: AffiseInitProperties
     private let launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    private var isReady: Bool = false
 
     init(
         app: UIApplication,
         initProperties: AffiseInitProperties,
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) {
-        do {
-            self.app = app;
-            self.initProperties = initProperties;
-            self.launchOptions = launchOptions;
+    ) throws {
+        self.app = app;
+        self.initProperties = initProperties;
+        self.launchOptions = launchOptions;
 
-    //        sendGDPREventUseCase.sendForgetMeEvent()
-            webViewUseCase.initialize()
-            setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
-            sessionManager.initialize()
-    //        oaidManager.init(app)
-    //        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
-            deeplinkManager.initialize(launchOptions: launchOptions)
-    //        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
-    //        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
-
-            moduleManager.initialize(
-                app: app,
-                dependencies: [
-                    stringToSha256Converter,
-                    networkService,
-                    providersToJsonStringConverter,
-                    postBackModelFactory,
-                    postBackModelToJsonStringConverter
-                ]
-            )
-            persistentUseCase.initialize(moduleManager: moduleManager)
-            firstAppOpenUseCase.onAppCreated()
-            try eventsManager.initialize()
-
-            isReady = true
-            initProperties.onInitSuccessHandler?()
-        } catch {
-            initProperties.onInitErrorHandler?(error)
-        }
+        try initialize()
     }
 
-    func isInitialized() -> Bool {
-        return isReady
+    open func initialize() throws {
+//        sendGDPREventUseCase.sendForgetMeEvent()
+        webViewUseCase.initialize()
+        setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
+        sessionManager.initialize()
+//        oaidManager.init(app)
+//        retrieveInstallReferrerUseCase.startInstallReferrerRetrieve()
+        deeplinkManager.initialize(launchOptions: launchOptions)
+//        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
+//        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
+
+        moduleManager.initialize(
+            app: app,
+            dependencies: [
+                stringToSha256Converter,
+                networkService,
+                providersToJsonStringConverter,
+                postBackModelFactory,
+                postBackModelToJsonStringConverter
+            ]
+        )
+        persistentUseCase.initialize(moduleManager: moduleManager)
+        firstAppOpenUseCase.onAppCreated()
+        try eventsManager.initialize()
     }
     
     lazy var bundle: Bundle = Bundle.main

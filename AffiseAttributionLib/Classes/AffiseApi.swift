@@ -21,6 +21,4 @@ internal protocol AffiseApi {
     var debugNetworkUseCase: DebugNetworkUseCase {get}
     var immediateSendToServerUseCase: ImmediateSendToServerUseCase {get}
     var pushTokenUseCase: PushTokenUseCase {get}
-
-    func isInitialized() -> Bool
 }

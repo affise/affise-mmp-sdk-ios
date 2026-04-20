@@ -1,5 +1,5 @@
 import Foundation
 
 public struct BuildConfig {
-    public static let AFFISE_VERSION = "1.7.3"
+    public static let AFFISE_VERSION = "1.7.4"
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseInternal"
-  spec.version      = ENV['LIB_VERSION'] || "1.7.3"
+  spec.version      = ENV['LIB_VERSION'] || "1.7.4"
   spec.summary      = "Affise Internal library"
   spec.description  = "Affise Internal wrapper library for crossplatform"
   spec.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"

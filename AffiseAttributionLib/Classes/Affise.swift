@@ -9,12 +9,10 @@ import WebKit
 @objc
 public final class Affise: NSObject {
 
-    private static let queue = DispatchQueue(label: "com.affise.AffiseComponent")
-
     /**
      * Api to communication with Affise
      */
-    private(set) internal static var api: AffiseApi?
+    internal static var api: AffiseApi?
 
     /**
      * Affise SDK settings builder
@@ -28,21 +26,6 @@ public final class Affise: NSObject {
         secretKey: String
     ) -> AffiseSettings {
         return AffiseSettings(affiseAppId: affiseAppId, secretKey: secretKey)
-    }
-    
-    internal static func start(
-        initProperties: AffiseInitProperties,
-        app: UIApplication,
-        launchOptions: [UIApplication.LaunchOptionsKey: Any]?
-    ) {
-        queue.sync {
-            if (api == nil) {
-                api = AffiseComponent(app: app, initProperties: initProperties, launchOptions: launchOptions)
-            } else {
-                api?.initProperties.onInitErrorHandler?(AffiseError.alreadyInitialized)
-                debugPrint(AffiseError.ALREADY_INITIALIZED)
-            }
-        }
     }
     
     /**

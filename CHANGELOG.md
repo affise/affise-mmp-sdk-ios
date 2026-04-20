@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.4] - 2026-04-20
+
+### Fixed
+
+- Fix `Affise.settings.setOnInitSuccess`
+- Fix `Affise.settings.setOnInitError`
+  
 ## [1.7.3] - 2026-04-02
 
 ### Changed
