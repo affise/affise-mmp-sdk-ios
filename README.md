@@ -157,6 +157,14 @@ To add the SDK using SPM:
 
 4. In `Choose Package Products` window select required packages and click `Add Package`, and it will be added to your iOS project and linked automatically.
 
+> [!CAUTION]
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+>
+> **Do not add** `AffiseInternal` this library is **ONLY** for crossplatform internal use
+>
+> 🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥🟥
+
 ### Initialize
 
 After library is added as dependency sync project with gradle files and initialize.
