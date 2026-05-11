@@ -143,7 +143,7 @@ public class AffiseSettings: NSObject {
         app: UIApplication,
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) {
-        AffiseInternal.start(
+        InternalApi.start(
             initProperties: getInitProperties(), 
             app: app, 
             launchOptions: launchOptions

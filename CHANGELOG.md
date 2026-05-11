@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.6] - 2026-05-11
+
+### Fixed
+
+- Fix missing import for SPM
+
 ## [1.7.5] - 2026-04-24
 
 ### Changed
@@ -317,6 +323,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.6]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.5...1.7.6
 [1.7.5]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.4...1.7.5
 [1.7.4]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.3...1.7.4
 [1.7.3]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.2...1.7.3

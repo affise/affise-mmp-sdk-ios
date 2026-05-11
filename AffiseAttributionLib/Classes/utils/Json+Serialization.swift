@@ -14,7 +14,8 @@ internal extension String {
 }
 
 
-internal func unescapeJson(_ data: Any) -> Any {
+internal func unescapeJson(_ data: Any?) -> Any? {
+    guard let data = data else { return nil }
     if let data = data as? String {
         return data.jsonStringUnescape()
     } else if let data = data as? [Any] {

@@ -62,7 +62,6 @@ jobs:
           make install
 
       - name: Create AffiseAttributionLib XCFramework
-        continue-on-error: true
         run: |
           swift create-xcframework AffiseAttributionLib --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
           swift create-xcframework AffiseModuleAdvertising --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip

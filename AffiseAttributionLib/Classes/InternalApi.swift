@@ -1,6 +1,7 @@
 import Foundation
+import UIKit
 
-internal struct AffiseInternal {
+internal struct InternalApi {
     
     private static let queue = DispatchQueue(label: "com.affise.AffiseInternal")
 

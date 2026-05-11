@@ -47,6 +47,6 @@ internal class InternalEvent: NSObject {
     }
     
     func send() {
-        AffiseInternal.sendInternalEvent(self)
+        InternalApi.sendInternalEvent(self)
     }
 }
