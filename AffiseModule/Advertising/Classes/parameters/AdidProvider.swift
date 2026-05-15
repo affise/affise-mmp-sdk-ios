@@ -16,7 +16,7 @@ internal class AdidProvider : StringPropertyProvider {
     }
     
     public override func getOrder() -> Float {
-        29.0
+        29.1
     }
 
     public override func getKey() -> ProviderType? {

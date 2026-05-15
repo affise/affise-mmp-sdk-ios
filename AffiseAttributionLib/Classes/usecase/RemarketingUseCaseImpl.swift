@@ -1,24 +1,25 @@
 import Foundation
-import UIKit
 
 internal class RemarketingUseCaseImpl: RemarketingUseCase {
     
-    lazy var osAndVersion: String = getOsAndVersion()
+    lazy var osAndVersion: String = deviceUseCase.getOsAndVersion()
     
     lazy var device: String? = getDevice()
     
     lazy var build: String? = getBuild()
+
+        
+    private let deviceUseCase: DeviceUseCase
+    
+    init(deviceUseCase: DeviceUseCase) {
+        self.deviceUseCase = deviceUseCase
+    }
     
     func local() -> String {
         let locale = Locale.current
         guard let languageCode = locale.languageCode else { return locale.identifier }
         guard let regionCode = locale.regionCode else { return locale.identifier }
         return "\(languageCode)_\(regionCode)"
-    }
-
-    private func getOsAndVersion() -> String {
-        let uid:UIDevice = UIDevice.current
-        return "\(uid.systemName) \(uid.systemVersion)"
     }
 
     private func getDevice() -> String? {

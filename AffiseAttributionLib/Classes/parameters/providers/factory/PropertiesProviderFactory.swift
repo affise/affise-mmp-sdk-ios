@@ -1,5 +1,4 @@
 import Foundation
-import UIKit
 
 /**
  * Factory for [PostBackModelFactory]
@@ -86,7 +85,7 @@ internal class PropertiesProviderFactory {
                 },
                 ConnectionTypeProvider(),
                 CpuTypeProvider(),
-                HardwareNameProvider(),
+                HardwareNameProvider(useCase: deviceUseCase),
                 NetworkTypeProvider(),
                 DeviceManufacturerProvider(),
                 ProxyIpAddressProvider(),
@@ -101,16 +100,17 @@ internal class PropertiesProviderFactory {
                 MNCProvider(useCase: networkInfoUseCase),
                 IspNameProvider(useCase: networkInfoUseCase),
                 IsEmulatorProvider(useCase: deviceUseCase),
+                IdentifierForVendorProvider(useCase: deviceUseCase),
                 RegionProvider(),
                 CountryProvider(),
                 LanguageProvider(remarketingUseCase),
-                DeviceNameProvider(),
-                DeviceTypeProvider(),
-                OsNameProvider(),
+                DeviceNameProvider(useCase: deviceUseCase),
+                DeviceTypeProvider(useCase: deviceUseCase),
+                OsNameProvider(useCase: deviceUseCase),
                 PlatformNameProvider(),
                 SdkPlatformNameProvider(),
                 AffSDKVersionProvider(),
-                OSVersionProvider(),
+                OSVersionProvider(useCase: deviceUseCase),
                 RandomUserIdProvider(useCase: appUUIDs),
                 IsProductionPropertyProvider(storage: initPropertiesStorage),
                 TimezoneDeviceProvider(),

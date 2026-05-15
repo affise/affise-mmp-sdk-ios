@@ -16,7 +16,7 @@ internal class AdServiceAttributionTokenProvider : StringPropertyProvider {
     }
     
     public override func getOrder() -> Float {
-        29.1
+        29.2
     }
 
     public override func getKey() -> ProviderType? {

@@ -1,12 +1,18 @@
-import UIKit
+import Foundation
 
 /**
  * Provider for parameter [ProviderType.HARDWARE_NAME]
  */
 class HardwareNameProvider: StringPropertyProvider {
     
+    private let useCase: DeviceUseCase
+    
+    init(useCase: DeviceUseCase) {
+        self.useCase = useCase
+    }
+
     override func provide() -> String? {
-        return UIDevice.current.model
+        return useCase.getHardwareName()
     }
     
     public override func getOrder() -> Float {

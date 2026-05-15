@@ -1,9 +1,10 @@
 import Foundation
 
 /**
- * Provider for parameter [ProviderType.DEVICE_TYPE]
+ * Provider for parameter [ProviderType.IDFV]
+ * IDFV (Identifier for Vendor)
  */
-class DeviceTypeProvider: StringPropertyProvider {
+class IdentifierForVendorProvider: StringPropertyProvider {
     
     private let useCase: DeviceUseCase
     
@@ -12,14 +13,14 @@ class DeviceTypeProvider: StringPropertyProvider {
     }
 
     override func provide() -> String? {
-        return useCase.getDeviceType()
+        return useCase.getIdentifierForVendor()
     }
     
     public override func getOrder() -> Float {
-        42.0
+        29.0
     }
 
     public override func getKey() -> ProviderType? {
-        ProviderType.DEVICE_TYPE
+        ProviderType.IDFV
     }
 }

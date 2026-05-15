@@ -155,7 +155,7 @@ internal class AffiseComponent: AffiseApi {
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
-    lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl()
+    lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl(deviceUseCase: deviceUseCase)
     lazy var persistentUseCase: PersistentUseCase = PersistentUseCaseImpl()
     lazy var networkInfoUseCase: NetworkInfoUseCase = NetworkInfoUseCaseImpl()
 
