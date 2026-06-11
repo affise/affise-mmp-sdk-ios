@@ -30,10 +30,12 @@ internal class AffiseComponent: AffiseApi {
         deeplinkManager.initialize(launchOptions: launchOptions)
 //        autoCatchingClickProvider.init(initProperties.autoCatchingClickEvents)
 //        metricsManager.setEnabledMetrics(initProperties.enabledMetrics)
+        firstAppOpenUseCase.onAppCreated()
 
         moduleManager.initialize(
             app: app,
             dependencies: [
+                firstAppOpenUseCase,
                 stringToSha256Converter,
                 networkService,
                 providersToJsonStringConverter,
@@ -42,7 +44,6 @@ internal class AffiseComponent: AffiseApi {
             ]
         )
         persistentUseCase.initialize(moduleManager: moduleManager)
-        firstAppOpenUseCase.onAppCreated()
         try eventsManager.initialize()
     }
     
@@ -52,9 +53,9 @@ internal class AffiseComponent: AffiseApi {
     lazy var fileManager: FileManager = FileManager.default
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
 
-    lazy var firstAppOpenUseCase:FirstAppOpenUseCase = FirstAppOpenUseCase(preferences: preferences)
-    lazy var webViewUseCase:WebViewUseCase = WebViewUseCase(preferences: preferences)
-    lazy var appLifecycleEventsManager:AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
+    lazy var firstAppOpenUseCase: FirstAppOpenUseCase = FirstAppOpenUseCaseImpl(preferences: preferences)
+    lazy var webViewUseCase: WebViewUseCase = WebViewUseCase(preferences: preferences)
+    lazy var appLifecycleEventsManager: AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
         notificationCenter: notificationCenter,
         logsManager: logsManager
     )

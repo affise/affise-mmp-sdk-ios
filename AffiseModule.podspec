@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.7.7"
+  s.version      = ENV["LIB_VERSION"] || "1.7.8"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
@@ -22,6 +22,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = "12.0"
   s.swift_version = "5.7"
+  s.static_framework = true
 
   s.dependency "AffiseAttributionLib", "#{s.version}"
   
@@ -36,6 +37,11 @@ Pod::Spec.new do |s|
   
   s.subspec "AppsFlyer" do |sub|
     sub.source_files = "AffiseModule/AppsFlyer/Classes/**/*.{swift}"
+  end
+
+  s.subspec "Google" do |sub|
+    sub.source_files = "AffiseModule/Google/Classes/**/*.{swift}"
+    sub.dependency "GoogleAdsOnDeviceConversion"
   end
 
   s.subspec "Link" do |sub|

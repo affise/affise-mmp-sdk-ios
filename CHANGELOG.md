@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.7.8] - 2026-06-11
+
+### Added
+
+- New module `Google` 
+- Provider `odm_info`
+
+### Changed
+
+- Initial data send
+
 ## [1.7.7] - 2026-05-14
 
 ### Added
@@ -329,6 +340,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.8]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.7...1.7.8
 [1.7.7]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.6...1.7.7
 [1.7.6]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.5...1.7.6
 [1.7.5]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.4...1.7.5

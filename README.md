@@ -16,6 +16,7 @@
 | `AffiseModule/AdService`  | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Google`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
@@ -38,6 +39,7 @@
       - [Module AdService](#module-adservice)
       - [Module Advertising](#module-advertising)
       - [Module AppsFlyer](#module-appsflyer)
+      - [Module Google](#module-google)
       - [Module Link](#module-link)
       - [Module Persistent](#module-persistent)
       - [Module Status](#module-status)
@@ -116,12 +118,13 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.7.7'
+affise_version = '1.7.8'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
 pod 'AffiseModule/AdService', affise_version
 pod 'AffiseModule/Advertising', affise_version
+pod 'AffiseModule/Google', affise_version
 pod 'AffiseModule/Link', affise_version
 pod 'AffiseModule/Persistent', affise_version
 pod 'AffiseModule/Status', affise_version
@@ -132,12 +135,13 @@ pod 'AffiseModule/TikTok', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.7.7'
+affise_version = '1.7.8'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
 pod 'AffiseModule/AdService', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Google', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Link', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Persistent', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Status', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
@@ -269,6 +273,7 @@ Affise
 | `AdService`    | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Google`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
@@ -360,6 +365,16 @@ Is Module present:
 
 ```swift
 Affise.Module.AppsFlyer.hasModule()
+```
+
+#### Module Google
+
+Provides `odm_info` value from Google On-Device Conversion Measurement SDK.
+
+Is Module present:
+
+```swift
+Affise.Module.Google.hasModule()
 ```
 
 #### Module Link
@@ -555,14 +570,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.7.7'
+pod 'AffiseSKAdNetwork', '1.7.8'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.7'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.8'
 ```
 
 For `swift` use:

@@ -6,6 +6,7 @@ public enum AffiseModules: Int {
     case AdService
     case Advertising
     case AppsFlyer
+    case Google
     case Link
     case Persistent
     case Status
@@ -17,6 +18,7 @@ public enum AffiseModules: Int {
         case .AdService: return "AdService"
         case .Advertising: return "Advertising"
         case .AppsFlyer: return "AppsFlyer"
+        case .Google: return "Google"
         case .Link: return "Link"
         case .Persistent: return "Persistent"
         case .Status: return "Status"

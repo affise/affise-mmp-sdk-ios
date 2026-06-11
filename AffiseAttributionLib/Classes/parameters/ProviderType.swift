@@ -103,6 +103,9 @@ public enum ProviderType: Int {
     case ALTSTR_ADID
     case FIREOS_ADID
     case COLOROS_ADID
+
+    // Google
+    case ODM_INFO
     
     // network
     case MAC_SHA1
@@ -217,6 +220,9 @@ public enum ProviderType: Int {
         case .ALTSTR_ADID: return "altstr_adid"
         case .FIREOS_ADID: return "fireos_adid"
         case .COLOROS_ADID: return "coloros_adid"
+
+        // Google
+        case .ODM_INFO: return "odm_info"
 
             
         // network

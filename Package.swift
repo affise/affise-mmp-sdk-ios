@@ -1,4 +1,4 @@
-// swift-tools-version: 5.6
+// swift-tools-version: 5.9
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -13,6 +13,7 @@ let package = Package(
         .library(name: "AffiseModuleAdService", targets: ["AffiseModuleAdService"]),
         .library(name: "AffiseModuleAdvertising", targets: ["AffiseModuleAdvertising"]),
         .library(name: "AffiseModuleAppsFlyer", targets: ["AffiseModuleAppsFlyer"]),
+        .library(name: "AffiseModuleGoogle", targets: ["AffiseModuleGoogle"]),
         .library(name: "AffiseModuleLink", targets: ["AffiseModuleLink"]),
         .library(name: "AffiseModulePersistent", targets: ["AffiseModulePersistent"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
@@ -20,6 +21,9 @@ let package = Package(
         .library(name: "AffiseModuleTikTok", targets: ["AffiseModuleTikTok"]),
         .library(name: "AffiseSKAdNetwork", targets: ["AffiseSKAdNetwork", "AffiseInternalWrapperObjC"]),
         .library(name: "AffiseInternal", targets: ["AffiseInternal"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/googleads/google-ads-on-device-conversion-ios-sdk.git", from: "3.0.0"),
     ],
     targets: [
         .target(
@@ -49,6 +53,15 @@ let package = Package(
             name: "AffiseModuleAppsFlyer",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/AppsFlyer",
+            sources: [ "Classes" ]
+        ),
+        .target(
+            name: "AffiseModuleGoogle",
+            dependencies: [
+                "AffiseAttributionLib",
+                .product(name: "GoogleAdsOnDeviceConversion", package: "google-ads-on-device-conversion-ios-sdk"),
+            ],
+            path: "AffiseModule/Google",
             sources: [ "Classes" ]
         ),
         .target(
