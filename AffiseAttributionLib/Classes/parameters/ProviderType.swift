@@ -85,6 +85,12 @@ public enum ProviderType: Int {
     case IS_ROOTED
     case IS_EMULATOR
     case IDFV
+    case CPU_CORES
+    case SCREEN_WIDTH
+    case SCREEN_HEIGHT
+    case DENSITY
+    case TOTAL_DISK
+    case FREE_DISK
 
     // remarketing
     case OS_AND_VERSION
@@ -93,6 +99,8 @@ public enum ProviderType: Int {
 
     // adservice
     case AD_SERVICE_ATTRIBUTION
+    case ADVERTISER_TRACKING_ENABLED
+    case APPLICATION_TRACKING_ENABLED
 
     // advertising
     case GAID_ADID
@@ -151,6 +159,12 @@ public enum ProviderType: Int {
         case .REINSTALL_TIME: return "reinstall_time"
         case .LAST_SESSION_TIME: return "last_session_time"
         case .CPU_TYPE: return "cpu_type"
+        case .CPU_CORES: return "cpu_cores"
+        case .SCREEN_WIDTH: return "screen_width"
+        case .SCREEN_HEIGHT: return "screen_height"
+        case .DENSITY: return "density"
+        case .TOTAL_DISK: return "total_disk"
+        case .FREE_DISK: return "free_disk"
         case .HARDWARE_NAME: return "hardware_name"
         case .DEVICE_MANUFACTURER: return "device_manufacturer"
         case .DEEPLINK_CLICK: return "deeplink_click"
@@ -217,6 +231,8 @@ public enum ProviderType: Int {
         case .OAID: return "oaid"
         case .OAID_MD5: return "oaid_md5"
         case .ADID: return "adid"
+        case .ADVERTISER_TRACKING_ENABLED: return "advertiser_tracking_enabled"
+        case .APPLICATION_TRACKING_ENABLED: return "application_tracking_enabled"
         case .ALTSTR_ADID: return "altstr_adid"
         case .FIREOS_ADID: return "fireos_adid"
         case .COLOROS_ADID: return "coloros_adid"

@@ -51,6 +51,8 @@ internal extension Provider {
             return (self as? BooleanPropertyProvider)?.provideWithDefault()
         case is LongPropertyProvider:
             return (self as? LongPropertyProvider)?.provideWithDefault()
+        case is FloatPropertyProvider:
+            return (self as? FloatPropertyProvider)?.provideWithDefault()
         default:
             return nil
         }

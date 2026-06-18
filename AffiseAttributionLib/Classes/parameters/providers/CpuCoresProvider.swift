@@ -1,9 +1,7 @@
-import Foundation
-
 /**
- * Provider for parameter [ProviderType.CPU_TYPE]
+ * Provider for parameter [ProviderType.CPU_CORES]
  */
-class CpuTypeProvider: StringPropertyProvider {
+class CpuCoresProvider: LongPropertyProvider {
 
     private let useCase: ProcessInfoUseCase
 
@@ -11,15 +9,15 @@ class CpuTypeProvider: StringPropertyProvider {
         self.useCase = useCase
     }
 
-    override func provide() -> String? {
-        return useCase.getCpuName()
+    override func provide() -> Int64? {
+        return useCase.getCpuCores()
     }
-    
+
     public override func getOrder() -> Float {
-        22.0
+        22.1
     }
 
     public override func getKey() -> ProviderType? {
-        ProviderType.CPU_TYPE
+        ProviderType.CPU_CORES
     }
 }

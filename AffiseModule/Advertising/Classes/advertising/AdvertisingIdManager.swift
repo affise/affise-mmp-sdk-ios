@@ -11,4 +11,8 @@ protocol AdvertisingIdManager {
      * Returns google advertising id if present
      */
     func getAdvertisingId() -> String?
+
+    func isAdvertiserTrackingEnabled() -> Bool
+
+    func isApplicationTrackingEnabled() -> Bool
 }

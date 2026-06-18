@@ -44,8 +44,8 @@ open class StringPropertyProvider : PropertyProvider<String> {
 /**
  * Base boolean property provider
  */
-public class BooleanPropertyProvider : PropertyProvider<Bool> {
-    init() {
+open class BooleanPropertyProvider : PropertyProvider<Bool> {
+    public init() {
         super.init(false)
     }
 }
@@ -53,16 +53,25 @@ public class BooleanPropertyProvider : PropertyProvider<Bool> {
 /**
  * Base long property provider
  */
-public class LongPropertyProvider : PropertyProvider<Int64> {
-    init() {
+open class LongPropertyProvider : PropertyProvider<Int64> {
+    public init() {
         super.init(0)
+    }
+}
+
+/**
+ * Base float property provider
+ */
+open class FloatPropertyProvider : PropertyProvider<Double> {
+    public init() {
+        super.init(0.0)
     }
 }
 
 /**
  * Base string property provider with param
  */
-public class StringWithParamPropertyProvider : Provider {
+open class StringWithParamPropertyProvider : Provider {
     public func getOrder() -> Float {
         0
     }

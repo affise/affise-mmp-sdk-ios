@@ -13,11 +13,8 @@ class IspNameProvider: StringPropertyProvider {
     }
 
     override func provide() -> String? {
-        let carrier = useCase.firstCarrier()
-
         // Get carrier name
-        let carrierName = carrier?.carrierName
-        return carrierName
+        return useCase.firstCarrier()?.carrierName
     }
     
     public override func getOrder() -> Float {

@@ -156,6 +156,9 @@ internal class AffiseComponent: AffiseApi {
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
     lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
+    lazy var screenUseCase: ScreenUseCase = ScreenUseCaseImpl()
+    lazy var processInfoUseCase: ProcessInfoUseCase = ProcessInfoUseCaseImpl()
+    lazy var diskUseCase: DiskUseCase = DiskUseCaseImpl()
     lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl(deviceUseCase: deviceUseCase)
     lazy var persistentUseCase: PersistentUseCase = PersistentUseCaseImpl()
     lazy var networkInfoUseCase: NetworkInfoUseCase = NetworkInfoUseCaseImpl()
@@ -173,6 +176,9 @@ internal class AffiseComponent: AffiseApi {
         logsManager: logsManager,
         deeplinkClickRepository: deeplinkClickRepository,
         deviceUseCase: deviceUseCase,
+        screenUseCase: screenUseCase,
+        processInfoUseCase: processInfoUseCase,
+        diskUseCase: diskUseCase,
         remarketingUseCase: remarketingUseCase,
         retrieveReferrerUseCase: retrieveReferrerUseCase,
         networkInfoUseCase: networkInfoUseCase,

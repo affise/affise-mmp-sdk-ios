@@ -43,35 +43,35 @@ jobs:
             echo "VERSION=${{ github.ref_name }}" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Clone swift xcframework tool
-        run: |
-          git clone https://github.com/segment-integrations/swift-create-xcframework.git
+      # - name: Clone swift xcframework tool
+      #   run: |
+      #     git clone https://github.com/segment-integrations/swift-create-xcframework.git
 
-      - name: Cache swift xcframework tool
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/swift-create-xcframework/.build
-          key: ${{ runner.os }}-xcframework-${{ hashFiles('swift-create-xcframework/Sources/*.swift') }}
-          restore-keys: |
-            ${{ runner.os }}-xcframework-
+      # - name: Cache swift xcframework tool
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: |
+      #       ~/swift-create-xcframework/.build
+      #     key: ${{ runner.os }}-xcframework-${{ hashFiles('swift-create-xcframework/Sources/*.swift') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-xcframework-
 
-      - name: Install swift xcframework tool
-        run: |
-          cd swift-create-xcframework
-          make install
+      # - name: Install swift xcframework tool
+      #   run: |
+      #     cd swift-create-xcframework
+      #     make install
 
-      - name: Create AffiseAttributionLib XCFramework
-        run: |
-          swift create-xcframework AffiseAttributionLib --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleAdvertising --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleAdService --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleAppsFlyer --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleLink --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModulePersistent --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleStatus --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
-          swift create-xcframework AffiseModuleTikTok --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      # - name: Create AffiseAttributionLib XCFramework
+      #   run: |
+      #     swift create-xcframework AffiseAttributionLib --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleAdvertising --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleAdService --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleAppsFlyer --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleLink --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModulePersistent --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleStatus --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleSubscription --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
+      #     swift create-xcframework AffiseModuleTikTok --xc-setting OTHER_SWIFT_FLAGS='-DCREATE_XCFRAMEWORK' --zip
 
       # Release
       - name: Release
@@ -86,113 +86,113 @@ jobs:
           draft: false
           prerelease: false
       
-      # Upload AffiseAttributionLib
-      - name: Upload Release AffiseAttributionLib Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseAttributionLib.zip
-          asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip  
+      # # Upload AffiseAttributionLib
+      # - name: Upload Release AffiseAttributionLib Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseAttributionLib.zip
+      #     asset_name: AffiseAttributionLib-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip  
 
-      # Upload AffiseModuleAdService
-      - name: Upload Release AffiseModuleAdService Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleAdService.zip
-          asset_name: AffiseModuleAdService-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleAdService
+      # - name: Upload Release AffiseModuleAdService Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleAdService.zip
+      #     asset_name: AffiseModuleAdService-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleAdvertising
-      - name: Upload Release AffiseModuleAdvertising Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleAdvertising.zip
-          asset_name: AffiseModuleAdvertising-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleAdvertising
+      # - name: Upload Release AffiseModuleAdvertising Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleAdvertising.zip
+      #     asset_name: AffiseModuleAdvertising-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleAppsFlyer
-      - name: Upload Release AffiseModuleAppsFlyer Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleAppsFlyer.zip
-          asset_name: AffiseModuleAppsFlyer-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleAppsFlyer
+      # - name: Upload Release AffiseModuleAppsFlyer Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleAppsFlyer.zip
+      #     asset_name: AffiseModuleAppsFlyer-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleLink
-      - name: Upload Release AffiseModuleLink Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleLink.zip
-          asset_name: AffiseModuleLink-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleLink
+      # - name: Upload Release AffiseModuleLink Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleLink.zip
+      #     asset_name: AffiseModuleLink-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModulePersistent
-      - name: Upload Release AffiseModulePersistent Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModulePersistent.zip
-          asset_name: AffiseModulePersistent-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModulePersistent
+      # - name: Upload Release AffiseModulePersistent Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModulePersistent.zip
+      #     asset_name: AffiseModulePersistent-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleStatus
-      - name: Upload Release AffiseModuleStatus Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleStatus.zip
-          asset_name: AffiseModuleStatus-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleStatus
+      # - name: Upload Release AffiseModuleStatus Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleStatus.zip
+      #     asset_name: AffiseModuleStatus-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleSubscription
-      - name: Upload Release AffiseModuleSubscription Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleSubscription.zip
-          asset_name: AffiseModuleSubscription-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleSubscription
+      # - name: Upload Release AffiseModuleSubscription Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleSubscription.zip
+      #     asset_name: AffiseModuleSubscription-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
-      # Upload AffiseModuleTikTok
-      - name: Upload Release AffiseModuleTikTok Framework 📦
-        continue-on-error: true
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./AffiseModuleTikTok.zip
-          asset_name: AffiseModuleTikTok-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
-          asset_content_type: application/zip
+      # # Upload AffiseModuleTikTok
+      # - name: Upload Release AffiseModuleTikTok Framework 📦
+      #   continue-on-error: true
+      #   uses: actions/upload-release-asset@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     upload_url: ${{ steps.create_release.outputs.upload_url }} 
+      #     asset_path: ./AffiseModuleTikTok.zip
+      #     asset_name: AffiseModuleTikTok-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
+      #     asset_content_type: application/zip
 
       # # Upload AffiseSKAdNetwork
       #   continue-on-error: true
@@ -206,32 +206,32 @@ jobs:
       #     asset_name: AffiseSKAdNetwork-${{ steps.version_tag.outputs.VERSION }}.xcframework.zip
       #     asset_content_type: application/zip
 
-      - name: Tg Release failed
-        continue-on-error: true
-        id: tg_failed
-        if: ${{ failure() }}
-        uses: cbrgm/telegram-github-action@v1
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          disable_web_page_preview: true
-          message: |
-            🔴 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release failed
+      # - name: Tg Release failed
+      #   continue-on-error: true
+      #   id: tg_failed
+      #   if: ${{ failure() }}
+      #   uses: cbrgm/telegram-github-action@v1
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     format: markdown
+      #     disable_web_page_preview: true
+      #     message: |
+      #       🔴 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release failed
 
-            [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
+      #       [Github Action](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
 
-      - name: Tg Release
-        continue-on-error: true
-        id: tg_success
-        if: ${{ success() }}
-        uses: ./.github/actions/tg
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_TOKEN }}
-          format: markdown
-          disable_web_page_preview: true
-          message: |
-            🟢 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release
+      # - name: Tg Release
+      #   continue-on-error: true
+      #   id: tg_success
+      #   if: ${{ success() }}
+      #   uses: ./.github/actions/tg
+      #   with:
+      #     to: ${{ secrets.TELEGRAM_TO }}
+      #     token: ${{ secrets.TELEGRAM_TOKEN }}
+      #     format: markdown
+      #     disable_web_page_preview: true
+      #     message: |
+      #       🟢 iOS `${{ steps.version_tag.outputs.VERSION }}` XCFramework release
 
-            [Changelog](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md)
+      #       [Changelog](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md)

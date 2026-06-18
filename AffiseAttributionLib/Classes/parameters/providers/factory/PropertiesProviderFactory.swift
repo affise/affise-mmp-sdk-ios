@@ -16,6 +16,9 @@ internal class PropertiesProviderFactory {
     private let logsManager: LogsManager
     private let deeplinkClickRepository: DeeplinkClickRepository
     private let deviceUseCase: DeviceUseCase
+    private let screenUseCase: ScreenUseCase
+    private let processInfoUseCase: ProcessInfoUseCase
+    private let diskUseCase: DiskUseCase
     private let remarketingUseCase: RemarketingUseCase
     private let retrieveReferrerUseCase: RetrieveReferrerUseCase
     private let networkInfoUseCase: NetworkInfoUseCase
@@ -33,6 +36,9 @@ internal class PropertiesProviderFactory {
         logsManager: LogsManager,
         deeplinkClickRepository: DeeplinkClickRepository,
         deviceUseCase: DeviceUseCase,
+        screenUseCase: ScreenUseCase,
+        processInfoUseCase: ProcessInfoUseCase,
+        diskUseCase: DiskUseCase,
         remarketingUseCase: RemarketingUseCase,
         retrieveReferrerUseCase: RetrieveReferrerUseCase,
         networkInfoUseCase: NetworkInfoUseCase,
@@ -49,6 +55,9 @@ internal class PropertiesProviderFactory {
         self.logsManager = logsManager
         self.deeplinkClickRepository = deeplinkClickRepository
         self.deviceUseCase = deviceUseCase
+        self.screenUseCase = screenUseCase
+        self.processInfoUseCase = processInfoUseCase
+        self.diskUseCase = diskUseCase
         self.remarketingUseCase = remarketingUseCase
         self.retrieveReferrerUseCase = retrieveReferrerUseCase
         self.networkInfoUseCase = networkInfoUseCase
@@ -84,7 +93,13 @@ internal class PropertiesProviderFactory {
                     return lastSessionTimeProvider.provide()
                 },
                 ConnectionTypeProvider(),
-                CpuTypeProvider(),
+                CpuTypeProvider(useCase: processInfoUseCase),
+                CpuCoresProvider(useCase: processInfoUseCase),
+                ScreenWidthProvider(useCase: screenUseCase),
+                ScreenHeightProvider(useCase: screenUseCase),
+                DensityProvider(useCase: screenUseCase),
+                TotalDiskProvider(useCase: diskUseCase),
+                FreeDiskProvider(useCase: diskUseCase),
                 HardwareNameProvider(useCase: deviceUseCase),
                 NetworkTypeProvider(),
                 DeviceManufacturerProvider(),

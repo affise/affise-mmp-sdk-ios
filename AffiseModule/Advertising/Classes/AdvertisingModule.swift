@@ -9,6 +9,8 @@ public final class AdvertisingModule: AffiseModule, AffiseAdvertisingApi {
     private lazy var advertisingIdManager: AdvertisingIdManager = AdvertisingIdManagerImpl()
     
     private lazy var adidProvider: Provider = AdidProvider(advertisingIdManager: advertisingIdManager)
+    private lazy var advertiserTrackingEnabledProvider: Provider = AdvertiserTrackingEnabledProvider(advertisingIdManager: advertisingIdManager)
+    private lazy var applicationTrackingEnabledProvider: Provider = ApplicationTrackingEnabledProvider(advertisingIdManager: advertisingIdManager)
 
     private var newProviders: [Provider] = []
 
@@ -20,7 +22,9 @@ public final class AdvertisingModule: AffiseModule, AffiseAdvertisingApi {
         advertisingIdManager.initialize()
         
         newProviders = [
-            adidProvider
+            adidProvider,
+            advertiserTrackingEnabledProvider,
+            applicationTrackingEnabledProvider
         ]
     }
 

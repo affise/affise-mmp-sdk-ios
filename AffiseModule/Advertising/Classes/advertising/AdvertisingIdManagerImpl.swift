@@ -28,4 +28,16 @@ class AdvertisingIdManagerImpl : AdvertisingIdManager {
     func getAdvertisingId() -> String? {
         return advertisingId
     }
+
+    func isAdvertiserTrackingEnabled() -> Bool {
+        if #available(iOS 14, *) {
+            return ATTrackingManager.trackingAuthorizationStatus == .authorized
+        }
+
+        return asIdentifierManager.isAdvertisingTrackingEnabled
+    }
+
+    func isApplicationTrackingEnabled() -> Bool {
+        return asIdentifierManager.isAdvertisingTrackingEnabled
+    }
 }

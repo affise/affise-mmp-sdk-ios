@@ -118,7 +118,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.7.8'
+affise_version = '1.7.9'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -135,7 +135,7 @@ pod 'AffiseModule/TikTok', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.7.8'
+affise_version = '1.7.9'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
@@ -570,14 +570,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.7.8'
+pod 'AffiseSKAdNetwork', '1.7.9'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.8'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.9'
 ```
 
 For `swift` use:
@@ -694,6 +694,12 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `LAST_SESSION_TIME`
 - `CONNECTION_TYPE`
 - `CPU_TYPE`
+- `CPU_CORES`
+- `SCREEN_WIDTH`
+- `SCREEN_HEIGHT`
+- `DENSITY`
+- `TOTAL_DISK`
+- `FREE_DISK`
 - `HARDWARE_NAME`
 - `NETWORK_TYPE`
 - `DEVICE_MANUFACTURER`
@@ -760,6 +766,8 @@ To match users with events and data library is sending, these `ProviderType` ide
 ### Advertising
 
 - `ADID`
+- `ADVERTISER_TRACKING_ENABLED`
+- `APPLICATION_TRACKING_ENABLED`
 
 ## Event send control
 

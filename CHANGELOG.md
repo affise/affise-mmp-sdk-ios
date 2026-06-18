@@ -1,11 +1,24 @@
 # Changelog
 
+## [1.7.9] - 2026-06-18
+
+### Added
+
+- Provider `ADVERTISER_TRACKING_ENABLED`
+- Provider `APPLICATION_TRACKING_ENABLED`
+- Provider `CPU_CORES`
+- Provider `SCREEN_WIDTH`
+- Provider `SCREEN_HEIGHT`
+- Provider `DENSITY`
+- Provider `TOTAL_DISK`
+- Provider `FREE_DISK`
+
 ## [1.7.8] - 2026-06-11
 
 ### Added
 
 - New module `Google` 
-- Provider `odm_info`
+- Provider `ODM_INFO`
 
 ### Changed
 
@@ -340,6 +353,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.9]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.8...1.7.9
 [1.7.8]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.7...1.7.8
 [1.7.7]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.6...1.7.7
 [1.7.6]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.5...1.7.6
