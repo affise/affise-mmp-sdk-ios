@@ -21,7 +21,7 @@ class GoogleOdmUseCaseImpl: GoogleOdmUseCase {
         ConversionManager.sharedInstance.setFirstLaunchTime(Date(timeIntervalSince1970: firstOpenDate))
         ConversionManager.sharedInstance.fetchAggregateConversionInfo(for: .installation) { [weak self] aggregateConversionInfo, error in
             guard error == nil else {
-                debugPrint("ODM error: \(error?.localizedDescription)")
+                debugPrint("ODM error: \(error?.localizedDescription ?? "Unknown")")
                 return
             }
             
