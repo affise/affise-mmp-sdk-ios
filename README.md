@@ -118,7 +118,7 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.7.15'
+affise_version = '1.7.16'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
@@ -135,7 +135,7 @@ pod 'AffiseModule/TikTok', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.7.15'
+affise_version = '1.7.16'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
@@ -570,14 +570,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.7.15'
+pod 'AffiseSKAdNetwork', '1.7.16'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.15'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.16'
 ```
 
 For `swift` use:
