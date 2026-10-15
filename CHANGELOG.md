@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.7.17] - 2026-10-15
+
+### Changed
+
+- Sync versions
+
 ## [1.7.16] - 2026-09-24
 
 ### Changed
@@ -395,6 +401,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.17]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.16...1.7.17
 [1.7.16]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.15...1.7.16
 [1.7.15]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.14...1.7.15
 [1.7.14]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.13...1.7.14
