@@ -22,7 +22,6 @@ internal class AffiseComponent: AffiseApi {
 
     open func initialize() throws {
 //        sendGDPREventUseCase.sendForgetMeEvent()
-        webViewUseCase.initialize()
         setPropertiesWhenInitUseCase.initialize(initProperties: initProperties)
         sessionManager.initialize()
 //        oaidManager.init(app)
@@ -48,13 +47,14 @@ internal class AffiseComponent: AffiseApi {
     }
     
     lazy var bundle: Bundle = Bundle.main
+    lazy var vendorUseCase: VendorUseCase = VendorUseCaseImpl()
+    lazy var emulatorUseCase: EmulatorUseCase = EmulatorUseCaseImpl()
     lazy var preferences: UserDefaults = UserDefaults.standard
     lazy var urlSession: URLSession = URLSession.shared
     lazy var fileManager: FileManager = FileManager.default
     lazy var notificationCenter: NotificationCenter = NotificationCenter.default
 
     lazy var firstAppOpenUseCase: FirstAppOpenUseCase = FirstAppOpenUseCaseImpl(preferences: preferences)
-    lazy var webViewUseCase: WebViewUseCase = WebViewUseCase(preferences: preferences)
     lazy var appLifecycleEventsManager: AppLifecycleEventsManager = AppLifecycleEventsManagerImpl(
         notificationCenter: notificationCenter,
         logsManager: logsManager
@@ -96,7 +96,6 @@ internal class AffiseComponent: AffiseApi {
     lazy var postBackModelToJsonStringConverter:PostBackModelToJsonStringConverter = PostBackModelToJsonStringConverter(indexUseCase: indexUseCase)
     lazy var cloudRepository:CloudRepository = CloudRepositoryImpl(
         networkService: networkService,
-        userAgentProvider: postBackModelFactory.getProvider(),
         converter: postBackModelToJsonStringConverter
     )
     lazy var sessionManager:SessionManager = SessionManagerImpl(
@@ -155,33 +154,22 @@ internal class AffiseComponent: AffiseApi {
     lazy var stringToMD5Converter: StringToMD5Converter = StringToMD5Converter()
     lazy var stringToSha256Converter: StringToSHA256Converter = StringToSHA256Converter()
     lazy var providersToJsonStringConverter: ProvidersToJsonStringConverter = ProvidersToJsonStringConverter()
-    lazy var deviceUseCase: DeviceUseCase = DeviceUseCaseImpl()
-    lazy var screenUseCase: ScreenUseCase = ScreenUseCaseImpl()
-    lazy var processInfoUseCase: ProcessInfoUseCase = ProcessInfoUseCaseImpl()
-    lazy var diskUseCase: DiskUseCase = DiskUseCaseImpl()
-    lazy var remarketingUseCase: RemarketingUseCase = RemarketingUseCaseImpl(deviceUseCase: deviceUseCase)
     lazy var persistentUseCase: PersistentUseCase = PersistentUseCaseImpl()
-    lazy var networkInfoUseCase: NetworkInfoUseCase = NetworkInfoUseCaseImpl()
 
     /**
      * PostBackModelFactory
      */
     lazy var postBackModelFactory: PostBackModelFactory = PropertiesProviderFactory(
         firstAppOpenUseCase: firstAppOpenUseCase,
-        webViewUseCase: webViewUseCase,
+        vendorUseCase: vendorUseCase,
+        emulatorUseCase: emulatorUseCase,
         sessionManager: sessionManager,
         preferences: preferences,
         initPropertiesStorage: initPropertiesStorage,
         stringToSha256Converter: stringToSha256Converter,
         logsManager: logsManager,
         deeplinkClickRepository: deeplinkClickRepository,
-        deviceUseCase: deviceUseCase,
-        screenUseCase: screenUseCase,
-        processInfoUseCase: processInfoUseCase,
-        diskUseCase: diskUseCase,
-        remarketingUseCase: remarketingUseCase,
         retrieveReferrerUseCase: retrieveReferrerUseCase,
-        networkInfoUseCase: networkInfoUseCase,
         pushTokenUseCase: pushTokenUseCase,
         packageInfoUseCase: packageInfoUseCase,
         appUUIDs: appUUIDs

@@ -6,15 +6,12 @@ internal class CloudRepositoryImpl {
     private let TIMEOUT_SEND: TimeInterval = 30
 
     private let networkService: NetworkService
-    private let userAgentProvider: UserAgentProvider?
     private let converter: PostBackModelToJsonStringConverter
 
     init(networkService: NetworkService,
-         userAgentProvider: UserAgentProvider?,
          converter: PostBackModelToJsonStringConverter) {
         
         self.networkService = networkService
-        self.userAgentProvider = userAgentProvider
         self.converter = converter
     }
 
@@ -23,7 +20,6 @@ internal class CloudRepositoryImpl {
      */
     private func createHeaders() -> Dictionary<String, String> {
         return [
-            "User-Agent" : (userAgentProvider?.provideWithDefault() ?? ""),
             "Content-Type" : "application/json; charset=utf-8"
         ]
     }

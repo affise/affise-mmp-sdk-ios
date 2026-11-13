@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseInternal"
-  spec.version      = ENV['LIB_VERSION'] || "1.7.17"
+  spec.version      = ENV['LIB_VERSION'] || "1.7.18"
   spec.summary      = "Affise Internal library"
   spec.description  = "Affise Internal wrapper library for crossplatform"
   spec.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
@@ -18,6 +18,8 @@ Pod::Spec.new do |spec|
     :git => "https://github.com/affise/affise-mmp-sdk-ios.git", 
     :tag => "#{spec.version}" 
   }
+
+  spec.resource_bundles = { "AffiseInternalPrivacy" => ["AffiseInternal/PrivacyInfo.xcprivacy"] }
 
   spec.source_files  = "AffiseInternal/Classes/**/*.{swift}"  
   spec.ios.deployment_target = "12.0"

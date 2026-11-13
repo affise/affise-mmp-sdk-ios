@@ -17,6 +17,7 @@
 | `AffiseModule/Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Google`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
+| `AffiseModule/Hardware`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
 | `AffiseModule/Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseModule)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/)        |
@@ -40,6 +41,7 @@
       - [Module Advertising](#module-advertising)
       - [Module AppsFlyer](#module-appsflyer)
       - [Module Google](#module-google)
+      - [Module Hardware](#module-hardware)
       - [Module Link](#module-link)
       - [Module Persistent](#module-persistent)
       - [Module Status](#module-status)
@@ -54,6 +56,7 @@
     - [Attribution](#attribution)
     - [AdService](#adservice)
     - [Advertising](#advertising)
+    - [Hardware](#hardware)
   - [Event send control](#event-send-control)
   - [Events tracking](#events-tracking)
   - [Custom events tracking](#custom-events-tracking)
@@ -118,13 +121,14 @@ referrer.
 To add the SDK using Cocoapods, specify the version you want to use in your Podfile:
 
 ```ruby
-affise_version = '1.7.17'
+affise_version = '1.7.18'
 # Affise SDK library
 pod 'AffiseAttributionLib', affise_version
 # Affise modules
 pod 'AffiseModule/AdService', affise_version
 pod 'AffiseModule/Advertising', affise_version
 pod 'AffiseModule/Google', affise_version
+pod 'AffiseModule/Hardware', affise_version
 pod 'AffiseModule/Link', affise_version
 pod 'AffiseModule/Persistent', affise_version
 pod 'AffiseModule/Status', affise_version
@@ -135,13 +139,14 @@ pod 'AffiseModule/TikTok', affise_version
 Get source directly from GitHub
 
 ```ruby
-affise_version = '1.7.17'
+affise_version = '1.7.18'
 # Affise SDK library
 pod 'AffiseAttributionLib', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 # Affise modules
 pod 'AffiseModule/AdService', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Advertising', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Google', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
+pod 'AffiseModule/Hardware', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Link', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Persistent', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
 pod 'AffiseModule/Status', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => affise_version
@@ -274,6 +279,7 @@ Affise
 | `Advertising`  | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `AppsFlyer`    | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Google`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
+| `Hardware`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Link`         | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Persistent`   | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
 | `Status`       | [![latest](https://badges.ws/cocoapods/v/AffiseAttributionLib)](https://github.com/CocoaPods/Specs/tree/master/Specs/0/3/d/AffiseModule/) |
@@ -376,6 +382,10 @@ Is Module present:
 ```swift
 Affise.Module.Google.hasModule()
 ```
+
+#### Module Hardware
+
+Provides device, operating system, CPU, screen, network and locale.
 
 #### Module Link
 
@@ -570,14 +580,14 @@ To add the SDK using Cocoapods, specify the version you want to use in your Podf
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', '1.7.17'
+pod 'AffiseSKAdNetwork', '1.7.18'
 ```
 
 Get source directly from GitHub
 
 ```ruby
 # Wrapper for StoreKit Ad Network 
-pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.17'
+pod 'AffiseSKAdNetwork', :git => 'https://github.com/affise/affise-mmp-sdk-ios.git', :tag => '1.7.18'
 ```
 
 For `swift` use:
@@ -692,18 +702,6 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `UNINSTALL_TIME`
 - `REINSTALL_TIME`
 - `LAST_SESSION_TIME`
-- `CONNECTION_TYPE`
-- `CPU_TYPE`
-- `CPU_CORES`
-- `SCREEN_WIDTH`
-- `SCREEN_HEIGHT`
-- `DENSITY`
-- `TOTAL_DISK`
-- `FREE_DISK`
-- `HARDWARE_NAME`
-- `NETWORK_TYPE`
-- `DEVICE_MANUFACTURER`
-- `PROXY_IP_ADDRESS`
 - `DEEPLINK_CLICK`
 - `DEVICE_ATLAS_ID`
 - `AFFISE_DEVICE_ID`
@@ -722,24 +720,12 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `REFTOKEN`
 - `REFTOKENS`
 - `REFERRER`
-- `USER_AGENT`
-- `MCCODE`
-- `MNCODE`
-- `ISP`
-- `REGION`
-- `COUNTRY`
-- `LANGUAGE`
-- `DEVICE_NAME`
-- `DEVICE_TYPE`
-- `OS_NAME`
 - `PLATFORM`
 - `SDK_PLATFORM`
 - `API_LEVEL_OS`
 - `AFFISE_SDK_VERSION`
-- `OS_VERSION`
 - `RANDOM_USER_ID`
 - `AFFISE_SDK_POS`
-- `TIMEZONE_DEV`
 - `AFFISE_EVENT_TOKEN`
 - `LAST_TIME_SESSION`
 - `TIME_SESSION`
@@ -768,6 +754,34 @@ To match users with events and data library is sending, these `ProviderType` ide
 - `ADID`
 - `ADVERTISER_TRACKING_ENABLED`
 - `APPLICATION_TRACKING_ENABLED`
+
+### Hardware
+
+- `USER_AGENT`
+- `CPU_TYPE`
+- `CPU_CORES`
+- `DEVICE`
+- `BUILD`
+- `DEVICE_NAME`
+- `PROXY_IP_ADDRESS`
+- `SCREEN_WIDTH`
+- `SCREEN_HEIGHT`
+- `DENSITY`
+- `HARDWARE_NAME`
+- `DEVICE_TYPE`
+- `OS_VERSION`
+- `OS_AND_VERSION`
+- `MCCODE`
+- `MNCODE`
+- `ISP`
+- `NETWORK_TYPE`
+- `CONNECTION_TYPE`
+- `TIMEZONE_DEV`
+- `LANGUAGE`
+- `COUNTRY`
+- `REGION`
+- `DEVICE_MANUFACTURER`
+- `OS_NAME`
 
 ## Event send control
 

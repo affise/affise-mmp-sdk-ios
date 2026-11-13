@@ -6,9 +6,9 @@ import Foundation
  */
 class IdentifierForVendorProvider: StringPropertyProvider {
     
-    private let useCase: DeviceUseCase
+    private let useCase: VendorUseCase
     
-    init(useCase: DeviceUseCase) {
+    init(useCase: VendorUseCase) {
         self.useCase = useCase
     }
 

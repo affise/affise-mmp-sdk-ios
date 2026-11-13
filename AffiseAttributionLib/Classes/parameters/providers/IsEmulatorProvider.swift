@@ -3,9 +3,9 @@
  */
 class IsEmulatorProvider: BooleanPropertyProvider {
     
-    private let useCase: DeviceUseCase
+    private let useCase: EmulatorUseCase
     
-    init(useCase: DeviceUseCase) {
+    init(useCase: EmulatorUseCase) {
         self.useCase = useCase
     }
 

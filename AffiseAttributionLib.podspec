@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseAttributionLib"
-  spec.version      = ENV['LIB_VERSION'] || "1.7.17"
+  spec.version      = ENV['LIB_VERSION'] || "1.7.18"
   spec.summary      = "Affise Attribution iOS library"
   spec.description  = "Affise SDK is a software you can use to collect app usage statistics, device identifiers, deeplink usage, track install referrer."
   spec.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
@@ -15,6 +15,8 @@ Pod::Spec.new do |spec|
     :git => "https://github.com/affise/affise-mmp-sdk-ios.git", 
     :tag => "#{spec.version}" 
   }
+
+  spec.resource_bundles = { "AffiseAttributionLibPrivacy" => ["AffiseAttributionLib/PrivacyInfo.xcprivacy"] }
 
   spec.source_files  = "AffiseAttributionLib/Classes/**/*.{h,m,swift}"
   spec.resources = "AffiseAttributionLib/Assets/*.{js}"

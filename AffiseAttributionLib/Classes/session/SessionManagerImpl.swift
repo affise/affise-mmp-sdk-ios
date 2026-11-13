@@ -101,7 +101,7 @@ class SessionManagerImpl {
          */
         if (self.openAppTime == nil) {
             //open app time
-            self.openAppTime = self.uptime()
+            self.openAppTime = self.currentTime()
         }
 
         delayRun(delay: SessionManagerImpl.TIME_TO_START_SESSION) {
@@ -146,7 +146,7 @@ class SessionManagerImpl {
         //Check open app time
         if let startTime = openAppTime {
             //Time current session
-            let time = uptime() - startTime - SessionManagerImpl.TIME_TO_START_SESSION
+            let time = currentTime() - startTime - SessionManagerImpl.TIME_TO_START_SESSION
             
             //if session started
             if (time > 0) {
@@ -186,10 +186,10 @@ class SessionManagerImpl {
     }
 
     /**
-     * The amount of time the system has been awake since the last time it was restarted.
+     * Current time in seconds since Unix epoch.
      */
-    private func uptime() -> TimeInterval {
-        return ProcessInfo.processInfo.systemUptime
+    private func currentTime() -> TimeInterval {
+        return Date().timeIntervalSince1970
     }
 }
 
@@ -224,7 +224,7 @@ extension SessionManagerImpl: SessionManager {
     
     func getSessionTime() -> TimeInterval {
         if let startTime = openAppTime{
-            return uptime() - startTime
+            return currentTime() - startTime
         } else {
             return 0
         }

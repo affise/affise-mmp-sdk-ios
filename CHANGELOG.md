@@ -1,5 +1,45 @@
 # Changelog
 
+## [1.7.18] - 2026-11-13
+
+### Add
+
+- New module `Hardware`
+- `PrivacyInfo.xcprivacy`
+
+### Removed
+
+- Provider `TOTAL_DISK`
+- Provider `FREE_DISK`
+
+### Changed
+
+- Provider `USER_AGENT` moved to module `Hardware`
+- Provider `CPU_TYPE` moved to module `Hardware`
+- Provider `CPU_CORES` moved to module `Hardware`
+- Provider `DEVICE` moved to module `Hardware`
+- Provider `BUILD` moved to module `Hardware`
+- Provider `DEVICE_NAME` moved to module `Hardware`
+- Provider `PROXY_IP_ADDRESS` moved to module `Hardware`
+- Provider `SCREEN_WIDTH` moved to module `Hardware`
+- Provider `SCREEN_HEIGHT` moved to module `Hardware`
+- Provider `DENSITY` moved to module `Hardware`
+- Provider `HARDWARE_NAME` moved to module `Hardware`
+- Provider `DEVICE_TYPE` moved to module `Hardware`
+- Provider `OS_VERSION` moved to module `Hardware`
+- Provider `OS_AND_VERSION` moved to module `Hardware`
+- Provider `MCCODE` moved to module `Hardware`
+- Provider `MNCODE` moved to module `Hardware`
+- Provider `ISP` moved to module `Hardware`
+- Provider `NETWORK_TYPE` moved to module `Hardware`
+- Provider `CONNECTION_TYPE` moved to module `Hardware`
+- Provider `TIMEZONE_DEV` moved to module `Hardware`
+- Provider `LANGUAGE` moved to module `Hardware`
+- Provider `COUNTRY` moved to module `Hardware`
+- Provider `REGION` moved to module `Hardware`
+- Provider `DEVICE_MANUFACTURER` moved to module `Hardware`
+- Provider `OS_NAME` moved to module `Hardware`
+
 ## [1.7.17] - 2026-10-15
 
 ### Changed
@@ -401,6 +441,7 @@
 - Improve `AffiseModuleManager`
 - Update for demo app
   
+[1.7.18]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.17...1.7.18
 [1.7.17]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.16...1.7.17
 [1.7.16]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.15...1.7.16
 [1.7.15]: https://github.com/affise/affise-mmp-sdk-ios/compare/1.7.14...1.7.15

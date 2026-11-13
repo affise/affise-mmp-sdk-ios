@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "AffiseModule"
-  s.version      = ENV["LIB_VERSION"] || "1.7.17"
+  s.version      = ENV["LIB_VERSION"] || "1.7.18"
   s.summary      = "Affise Modules"
   s.description  = "Affise module collection"
   s.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
@@ -27,41 +27,55 @@ Pod::Spec.new do |s|
   s.dependency "AffiseAttributionLib", "#{s.version}"
   
   s.subspec "AdService" do |sub|
+    sub.resource_bundles = { "AffiseModuleAdServicePrivacy" => ["AffiseModule/AdService/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/AdService/Classes/**/*.{swift}"
     sub.frameworks  = "AdServices"
   end
 
   s.subspec "Advertising" do |sub|
+    sub.resource_bundles = { "AffiseModuleAdvertisingPrivacy" => ["AffiseModule/Advertising/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Advertising/Classes/**/*.{swift}"
   end
   
   s.subspec "AppsFlyer" do |sub|
+    sub.resource_bundles = { "AffiseModuleAppsFlyerPrivacy" => ["AffiseModule/AppsFlyer/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/AppsFlyer/Classes/**/*.{swift}"
   end
 
   s.subspec "Google" do |sub|
+    sub.resource_bundles = { "AffiseModuleGooglePrivacy" => ["AffiseModule/Google/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Google/Classes/**/*.{swift}"
     sub.dependency "GoogleAdsOnDeviceConversion"
   end
 
+  s.subspec "Hardware" do |sub|
+    sub.resource_bundles = { "AffiseModuleHardwarePrivacy" => ["AffiseModule/Hardware/PrivacyInfo.xcprivacy"] }
+    sub.source_files = "AffiseModule/Hardware/Classes/**/*.{swift}"
+  end
+
   s.subspec "Link" do |sub|
+    sub.resource_bundles = { "AffiseModuleLinkPrivacy" => ["AffiseModule/Link/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Link/Classes/**/*.{swift}"
   end
   
   s.subspec "Persistent" do |sub|
+    sub.resource_bundles = { "AffiseModulePersistentPrivacy" => ["AffiseModule/Persistent/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Persistent/Classes/**/*.{swift}"
   end
 
   s.subspec "Status" do |sub|
+    sub.resource_bundles = { "AffiseModuleStatusPrivacy" => ["AffiseModule/Status/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Status/Classes/**/*.{swift}"
   end
 
   s.subspec "Subscription" do |sub|
+    sub.resource_bundles = { "AffiseModuleSubscriptionPrivacy" => ["AffiseModule/Subscription/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/Subscription/Classes/**/*.{swift}"
     sub.framework  = "StoreKit"
   end
   
   s.subspec "TikTok" do |sub|
+    sub.resource_bundles = { "AffiseModuleTikTokPrivacy" => ["AffiseModule/TikTok/PrivacyInfo.xcprivacy"] }
     sub.source_files = "AffiseModule/TikTok/Classes/**/*.{swift}"
   end
 end

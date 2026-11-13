@@ -89,8 +89,6 @@ public enum ProviderType: Int {
     case SCREEN_WIDTH
     case SCREEN_HEIGHT
     case DENSITY
-    case TOTAL_DISK
-    case FREE_DISK
 
     // remarketing
     case OS_AND_VERSION
@@ -163,8 +161,6 @@ public enum ProviderType: Int {
         case .SCREEN_WIDTH: return "screen_width"
         case .SCREEN_HEIGHT: return "screen_height"
         case .DENSITY: return "density"
-        case .TOTAL_DISK: return "total_disk"
-        case .FREE_DISK: return "free_disk"
         case .HARDWARE_NAME: return "hardware_name"
         case .DEVICE_MANUFACTURER: return "device_manufacturer"
         case .DEEPLINK_CLICK: return "deeplink_click"

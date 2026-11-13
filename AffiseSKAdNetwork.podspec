@@ -5,7 +5,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "AffiseSKAdNetwork"
-  spec.version      = ENV['LIB_VERSION'] || "1.7.17"
+  spec.version      = ENV['LIB_VERSION'] || "1.7.18"
   spec.summary      = "AffiseSKAdNetwork iOS library"
   spec.description  = "Affise library for StoreKit Ad Network (SKAdNetwork)"
   spec.homepage     = "https://github.com/affise/affise-mmp-sdk-ios"
@@ -15,6 +15,8 @@ Pod::Spec.new do |spec|
     :git => "https://github.com/affise/affise-mmp-sdk-ios.git", 
     :tag => "#{spec.version}" 
   }
+
+  spec.resource_bundles = { "AffiseSKAdNetworkPrivacy" => ["AffiseSKAdNetwork/PrivacyInfo.xcprivacy"] }
 
   spec.source_files  = "AffiseSKAdNetwork/**/*.{h,m,swift}"
   spec.platform = "ios"

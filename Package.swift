@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "AffiseModuleAdvertising", targets: ["AffiseModuleAdvertising"]),
         .library(name: "AffiseModuleAppsFlyer", targets: ["AffiseModuleAppsFlyer"]),
         .library(name: "AffiseModuleGoogle", targets: ["AffiseModuleGoogle"]),
+        .library(name: "AffiseModuleHardware", targets: ["AffiseModuleHardware"]),
         .library(name: "AffiseModuleLink", targets: ["AffiseModuleLink"]),
         .library(name: "AffiseModulePersistent", targets: ["AffiseModulePersistent"]),
         .library(name: "AffiseModuleStatus", targets: ["AffiseModuleStatus"]),
@@ -32,6 +33,7 @@ let package = Package(
             sources: [ "Classes" ],
             resources: [
                .process("Assets"),
+               .process("PrivacyInfo.xcprivacy"),
             ]
         ),
         .target(
@@ -39,6 +41,7 @@ let package = Package(
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/AdService",
             sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")],
             linkerSettings: [
                 .linkedFramework("AdServices"),
             ]
@@ -47,13 +50,15 @@ let package = Package(
             name: "AffiseModuleAdvertising",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Advertising",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModuleAppsFlyer",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/AppsFlyer",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModuleGoogle",
@@ -62,31 +67,43 @@ let package = Package(
                 .product(name: "GoogleAdsOnDeviceConversion", package: "google-ads-on-device-conversion-ios-sdk"),
             ],
             path: "AffiseModule/Google",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
+        ),
+        .target(
+            name: "AffiseModuleHardware",
+            dependencies: ["AffiseAttributionLib"],
+            path: "AffiseModule/Hardware",
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModuleLink",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Link",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModulePersistent",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Persistent",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModuleStatus",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Status",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseModuleSubscription",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/Subscription",
             sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")],
             linkerSettings: [
                 .linkedFramework("StoreKit"),
             ]
@@ -95,13 +112,15 @@ let package = Package(
             name: "AffiseModuleTikTok",
             dependencies: ["AffiseAttributionLib"],
             path: "AffiseModule/TikTok",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseSKAdNetwork",
             dependencies: ["AffiseInternalWrapperObjC"],
             path: "AffiseSKAdNetwork",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .target(
             name: "AffiseInternalWrapperObjC",
@@ -119,7 +138,8 @@ let package = Package(
                 "AffiseSKAdNetwork",
             ],
             path: "AffiseInternal",
-            sources: [ "Classes" ]
+            sources: [ "Classes" ],
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
     ]
 )

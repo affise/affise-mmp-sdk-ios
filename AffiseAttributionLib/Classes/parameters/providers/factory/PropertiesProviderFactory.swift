@@ -5,8 +5,9 @@ import Foundation
  */
 internal class PropertiesProviderFactory {
     
+    private let vendorUseCase: VendorUseCase
+    private let emulatorUseCase: EmulatorUseCase
     private let firstAppOpenUseCase: FirstAppOpenUseCase
-    private let webViewUseCase: WebViewUseCase
     private let sessionManager: SessionManager
     private let preferences: UserDefaults
     private let initPropertiesStorage: InitPropertiesStorage
@@ -15,52 +16,36 @@ internal class PropertiesProviderFactory {
     private let stringToSha256Converter: StringToSHA256Converter
     private let logsManager: LogsManager
     private let deeplinkClickRepository: DeeplinkClickRepository
-    private let deviceUseCase: DeviceUseCase
-    private let screenUseCase: ScreenUseCase
-    private let processInfoUseCase: ProcessInfoUseCase
-    private let diskUseCase: DiskUseCase
-    private let remarketingUseCase: RemarketingUseCase
     private let retrieveReferrerUseCase: RetrieveReferrerUseCase
-    private let networkInfoUseCase: NetworkInfoUseCase
     private let pushTokenUseCase: PushTokenUseCase
     private let packageInfoUseCase: PackageInfoUseCase
     private let appUUIDs: AppUUIDs
     
     init(
         firstAppOpenUseCase: FirstAppOpenUseCase,
-        webViewUseCase: WebViewUseCase,
+        vendorUseCase: VendorUseCase,
+        emulatorUseCase: EmulatorUseCase,
         sessionManager: SessionManager,
         preferences: UserDefaults,
         initPropertiesStorage: InitPropertiesStorage,
         stringToSha256Converter: StringToSHA256Converter,
         logsManager: LogsManager,
         deeplinkClickRepository: DeeplinkClickRepository,
-        deviceUseCase: DeviceUseCase,
-        screenUseCase: ScreenUseCase,
-        processInfoUseCase: ProcessInfoUseCase,
-        diskUseCase: DiskUseCase,
-        remarketingUseCase: RemarketingUseCase,
         retrieveReferrerUseCase: RetrieveReferrerUseCase,
-        networkInfoUseCase: NetworkInfoUseCase,
         pushTokenUseCase: PushTokenUseCase,
         packageInfoUseCase: PackageInfoUseCase,
         appUUIDs: AppUUIDs
     ) {
+        self.vendorUseCase = vendorUseCase
+        self.emulatorUseCase = emulatorUseCase
         self.firstAppOpenUseCase = firstAppOpenUseCase
-        self.webViewUseCase = webViewUseCase
         self.sessionManager = sessionManager
         self.preferences = preferences
         self.initPropertiesStorage = initPropertiesStorage
         self.stringToSha256Converter = stringToSha256Converter
         self.logsManager = logsManager
         self.deeplinkClickRepository = deeplinkClickRepository
-        self.deviceUseCase = deviceUseCase
-        self.screenUseCase = screenUseCase
-        self.processInfoUseCase = processInfoUseCase
-        self.diskUseCase = diskUseCase
-        self.remarketingUseCase = remarketingUseCase
         self.retrieveReferrerUseCase = retrieveReferrerUseCase
-        self.networkInfoUseCase = networkInfoUseCase
         self.pushTokenUseCase = pushTokenUseCase
         self.packageInfoUseCase = packageInfoUseCase
         self.appUUIDs = appUUIDs
@@ -92,43 +77,19 @@ internal class PropertiesProviderFactory {
                 CustomLongProvider(ProviderType.LAST_TIME_SESSION, order: 54.0) {
                     return lastSessionTimeProvider.provide()
                 },
-                ConnectionTypeProvider(),
-                CpuTypeProvider(useCase: processInfoUseCase),
-                CpuCoresProvider(useCase: processInfoUseCase),
-                ScreenWidthProvider(useCase: screenUseCase),
-                ScreenHeightProvider(useCase: screenUseCase),
-                DensityProvider(useCase: screenUseCase),
-                TotalDiskProvider(useCase: diskUseCase),
-                FreeDiskProvider(useCase: diskUseCase),
-                HardwareNameProvider(useCase: deviceUseCase),
-                NetworkTypeProvider(),
-                DeviceManufacturerProvider(),
-                ProxyIpAddressProvider(),
                 DeeplinkClickPropertyProvider(deeplinkClickRepository: deeplinkClickRepository),
                 EmptyStringProvider(ProviderType.DEVICE_ATLAS_ID, order: 26.0),
                 AffiseDeviceIdProvider(useCase: appUUIDs),
                 AffiseAltDeviceIdProvider(useCase: appUUIDs),
+                IdentifierForVendorProvider(useCase: vendorUseCase),
+                IsEmulatorProvider(useCase: emulatorUseCase),
                 RefTokenProvider(preferences: preferences),
                 RefTokensProvider(preferences: preferences),
-                UserAgentProvider(useCase: webViewUseCase),
-                MCCProvider(useCase: networkInfoUseCase),
-                MNCProvider(useCase: networkInfoUseCase),
-                IspNameProvider(useCase: networkInfoUseCase),
-                IsEmulatorProvider(useCase: deviceUseCase),
-                IdentifierForVendorProvider(useCase: deviceUseCase),
-                RegionProvider(),
-                CountryProvider(),
-                LanguageProvider(remarketingUseCase),
-                DeviceNameProvider(useCase: deviceUseCase),
-                DeviceTypeProvider(useCase: deviceUseCase),
-                OsNameProvider(useCase: deviceUseCase),
                 PlatformNameProvider(),
                 SdkPlatformNameProvider(),
                 AffSDKVersionProvider(),
-                OSVersionProvider(useCase: deviceUseCase),
                 RandomUserIdProvider(useCase: appUUIDs),
                 IsProductionPropertyProvider(storage: initPropertiesStorage),
-                TimezoneDeviceProvider(),
                 EmptyStringProvider(ProviderType.AFFISE_EVENT_TOKEN, order: 52.0),
                 EmptyStringProvider(ProviderType.AFFISE_EVENT_NAME, order: 53.0),
                 lastSessionTimeProvider,
@@ -143,9 +104,6 @@ internal class PropertiesProviderFactory {
                 EmptyStringProvider(ProviderType.LABEL, order: 62.0),
                 PushTokenProvider(pushTokenUseCase),
                 PushTokenServiceProvider(pushTokenUseCase),
-                OsAndVersionProvider(remarketingUseCase),
-                DeviceProvider(remarketingUseCase),
-                BuildProvider(remarketingUseCase),
                 ReferrerProvider(retrieveReferrerUseCase)
             ]
         )
